@@ -6,6 +6,9 @@ app.use(express.json())
 const routerUser = require('./routes/userRoute')
 const routerProduct = require('./routes/productRoute')
 const routerComment = require('./routes/commentRoute')
+const routerCart = require('./routes/cartRoute')
+const cors = require("cors")
+app.use(cors());
 
 // _________________________________________________________
 mongoose.Promise = global.Promise
@@ -21,6 +24,8 @@ app.use(routerUser)
 app.use('/product',routerProduct)
 // _________________________________________comment
 app.use('/comment',routerComment)
+// _________________________________________________cart
+app.use('/cart' ,routerCart)
 // _________________________________________________
 app.listen(3001, ()=>{
     console.log("express has started!")

@@ -10,17 +10,18 @@ const bcrypt = require('bcrypt')
 const User =new Schema({
     name :String,
     email:{type:String,
-    required:[true,"email should be provided"], 
+    required:[true,"email should be provided"],
+    unique:[true,"email already register"],
     validate :[isEmail, "Please enter an email"]},
     password:String,
     imageUser:String,
-    favorite:{ type: Schema.Types.ObjectId, ref: 'Product' },
-    cart:{ type: Schema.Types.ObjectId, ref: 'Cart' },
+    favorite:{ type: Schema.Types.ObjectId, ref: 'product' },
+    cart:{ type: Schema.Types.ObjectId, ref: 'cart' },
     userType:{type: String,
     enum:["byer","seller"]
     },
     comments:[{ type: Schema.Types.ObjectId, ref: 'Comment' }],
-    products:[{ type: Schema.Types.ObjectId, ref: 'Product' }],
+    products:[{ type: Schema.Types.ObjectId, ref: 'product' }],
     details:String
 })
 
@@ -53,4 +54,5 @@ User.post('save', function(doc,next){
     }
 
 
-module.exports= mongoose.model('User', User)
+const user = mongoose.model('User', User);
+module.exports = user

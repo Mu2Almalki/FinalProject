@@ -21,14 +21,14 @@ import React from 'react'
     
     let navegate = useNavigate()
     
-    useEffect (() =>{
-        axios.get('http://localhost:3001')
-        .then((res)=>{
-            console.log(res);
-            setUser(res.data);
+    // useEffect (() =>{
+    //     axios.get('http://localhost:3001')
+    //     .then((res)=>{
+    //         console.log(res);
+    //         setUser(res.data);
             
-        })
-        },[]);
+    //     })
+    //     },[]);
     
         function handlPost(e){
             e.preventDefault()
@@ -75,6 +75,10 @@ import React from 'react'
             </div>
   
           </div>
+          {/* <form>
+           <input type="radio" name="usertype">Seller </input>
+           <input type="radio" name="usertype">Buyer</input>
+          </form> */}
           <div className="footer">
             <button type="button" className="btn" onClick={(e)=>handlPost(e)}> Signup </button>
           </div>

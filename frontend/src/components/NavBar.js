@@ -3,10 +3,13 @@ import { Navbar , Container , Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AboutUs from './AboutUs'
 import Home from "./Home";
-import Login from "./Login";
+import Login from "../components/Login";
 import Signup from "./Signup";
 import AppLogin from "./AppLogin";
 import Seller from '../components/Seller'
+import Buyer from '../components/Buyer'
+
+import Cart from '../components/Cart'
 function NavBar () {
     return (  
      <>
@@ -30,6 +33,7 @@ function NavBar () {
     <Nav.Link><Link to="/AppLogin">Login</Link></Nav.Link>
     {/* <Nav.Link><Link to="/Signup">Signup</Link></Nav.Link> */}
      <Nav.Link > <Link to="/AboutUs">About Us </Link></Nav.Link>
+     <Nav.Link > <Link to="/Cart">Cart </Link></Nav.Link>
     </Nav>
     </Container>
   </Navbar>
@@ -40,6 +44,9 @@ function NavBar () {
           {/* <Route path="/Signup"  element={<Signup/>} /> */}
           <Route path="/AboutUs" element={<AboutUs/>} />
           <Route path="/Seller/:id" element={<Seller/>}/>
+          <Route path="/Buyer/:id" element={<Buyer/>}/>
+
+          <Route path="/Cart" element={<Cart/>}/>
 </Routes> 
   </>
 

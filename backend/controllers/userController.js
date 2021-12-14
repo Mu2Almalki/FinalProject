@@ -83,17 +83,17 @@ module.exports.logout_get=(req,res)=>{
     res.redirect('/')
 }
 // cart
-module.exports.post=async(req,res)=>{
-    const user= User.findById(req.body.userid)
-    const product =Product.findById(req.body.productid)
-    User.cart.push(product)
-    try{
-       await user.save()
-        res.send(product)
+// module.exports.post=async(req,res)=>{
+//     const user= User.findById(req.body.userid)
+//     const product =Product.findById(req.body.productid)
+//     User.cart.push(product)
+//     try{
+//        await user.save()
+//         res.send(product)
 
-    }catch(e){
-    console.log(e)
-    }
+//     }catch(e){
+//     console.log(e)
+//     }
 
 
-}
+// }
