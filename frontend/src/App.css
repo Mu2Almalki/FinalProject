@@ -1,6 +1,9 @@
 
 .App {
   text-align: center;
+  font-family: 'EB Garamond', serif;
+  font-family: 'Fruktur', cursive;
+  font-family: 'Merriweather', serif;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -41,8 +44,11 @@
 
 }
 .header{
-  font-size: 24px;
-  font-family: "0pen Sans", sans-serif;
+  font-size: 20px;
+  font-family: 'EB Garamond', serif;
+color:#FF7166 ;
+padding-top: 40px;
+
 }
 .content{
   display: flex;
@@ -51,7 +57,7 @@
 
 }
 .image{
-  width: 24em;
+  width: 21em;
 }
   .img1{
     width: 100%;
@@ -59,10 +65,10 @@
 
   }
   .form{
-    margin-top: 2em;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 20px;
 
   }
   .form-group{
@@ -70,6 +76,8 @@
     flex-direction: column;
     align-items: flex-start;
     width: fit-content;
+    color:#374FF8;
+    font-family: 'EB Garamond', serif;
   }
 label{
   font-size: 20px;
@@ -93,21 +101,21 @@ input :focus{
  box-shadow: 0px 0px 12px 0.8px #0e81ce96;
     
 }
-.footer{
-  margin-top: 3em;
-}
 /* button */
-.btn{
-  font-size: 21px;
-  padding: 5px 20px;
-  border: 0;
-  background-color: #474949;
-  /* color: #fff; */
-  border-radius: 3px;
-  transition: all 250ms ease-in-out;
-  cursor: pointer;
+ .botn{
+  font-size: 20px;
+  border-radius: 40%;
+  background-color: #4D70FE;
+  color: #fff;
+  /* transition: all 250ms ease-in-out; */
+  /* cursor:pointer; */
+ }
+ .botnn{
+   display: block;
+   justify-content: center;
+   align-items: center;
+ }
 
-}
 /* ________________________________ */
 
 .login {
@@ -139,7 +147,7 @@ input :focus{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 90%;
+    height: 85%;
     background-color: #f5c7c7;
     width: 100%;
     position: absolute;
@@ -149,6 +157,7 @@ input :focus{
     transition: all 400ms ease-in-out;
     cursor: pointer;
     box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.281);
+    font-family: 'EB Garamond', serif;
 
   }
   .right-side.right {
@@ -175,17 +184,18 @@ input :focus{
   margin-left: 3em;
 }
 .containerf{
+  margin-top: 30px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
- background-color: #fff;
+ background-color: rgb(236, 233, 233);
  box-shadow: 0px 0px 12px 2px ;
  border-radius: 4px;
  position: relative;
  z-index: 99;
  width: 100%;
- height: 100%;
- z-index: 99;
+ height: 95%;
  padding: 17px 10px;
 
 }
@@ -201,9 +211,18 @@ input :focus{
 /* ___________________________________ */
 
 .col-example1{
-  border-left: solid gray  ;
+  border-right: 5px solid rgb(250, 214, 214)  ;
 }
 .ct{
  display: flex;
  flex-direction: column;
+}
+.s1{
+  background-color: rgb(233, 230, 230);
+}
+.seller{
+margin-top:10px;
+}
+.simg{
+  border-radius: 50%;
 }

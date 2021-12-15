@@ -39,25 +39,47 @@ import logoLogin from '../image/logo-login.jpg'
       <div className="base.container" ref={props.containerRef}>
         <div className="header">Login</div>
         <div className="content">
-          <div className="image"><img className="img1" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3jabCF5UQ_5E-OqxySND71-UO6fh7d7Mf6A&usqp=CAU"}/></div>
+          <div className="image">
+            <img
+              className="img1"
+              src={
+                "https://www.bancomail.com/images/png/various/bm-signin.png"
+              }
+            />
+          </div>
           <div className="form">
-          <div className="form-group">
-                <label htmlFor="email" >Email</label>
-                <input type="text" name="email" placeholder="email" onChange ={(e)=> setAddEmail(e.target.value)}></input>
-              </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                name="email"
+                placeholder="email"
+                onChange={(e) => setAddEmail(e.target.value)}
+              ></input>
+            </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="text" name="password" placeholder="password" onChange ={(e)=> setAddPassword(e.target.value)}></input>
+              <input
+                type="text"
+                name="password"
+                placeholder="password"
+                onChange={(e) => setAddPassword(e.target.value)}
+              ></input>
+            </div>
+            <div className="botnn">
+              {" "}
+              <button
+                type="button"
+                className="botn"
+                onClick={(e) => handlPost(e)}
+              >
+                {" "}
+                Login
+              </button>
             </div>
           </div>
-
         </div>
-        <div className="footer">
-          <button type="button" className="btn" onClick={(e)=>handlPost(e)} > Login</button>
-        </div>
-
       </div>
-    
-     );
+    );
   }
 export default Login;

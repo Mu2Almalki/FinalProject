@@ -47,10 +47,39 @@ export default function Seller() {
     return (
         <div className="seller">
 <MDBRow>
+
+<MDBCol md='4' className='col-example1'>
+        
+        <div className="s1">
+              <img className="simg" src={user.imageUser}/>
+              <h1>{user.name}</h1>
+              <p>{user.details}</p>
+              </div>
+              <>
+        <MDBBtn rippleDuration={5000} rippleColor='danger' color='light' onClick={toggleShow}>Add Product</MDBBtn>
+        <MDBModal show={optSmModal} tabIndex='-1' setShow={setOptSmModal}>
+          <MDBModalDialog size='sm'>
+            <MDBModalContent>
+              <MDBModalHeader>
+                <MDBModalTitle>Add Product </MDBModalTitle>
+                <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
+              </MDBModalHeader>
+              <MDBModalBody>
+                {/* ______________________form________________________ */}
+  
+  
+                  {/* ____________________________________________________ */}
+              </MDBModalBody>
+            </MDBModalContent>
+          </MDBModalDialog>
+        </MDBModal>
+      </>
+              
+        </MDBCol>
   
       <MDBCol md='8' className='col-example'>
       
-        <div className='pb-3'><h2>My Products</h2> <hr/>
+        <div className='pb-3'><h2>My Products</h2> <hr style={{color:"rgb(236, 154, 154" , border:"solid"}}/>
         </div>
        
         <MDBRow>
@@ -71,34 +100,7 @@ export default function Seller() {
            
         </MDBRow>
       </MDBCol>
-      <MDBCol md='4' className='col-example1'>
-        
-      <div className="s1">
-            <img src={user.imageUser}/>
-            <h1>{user.name}</h1>
-            <p>{user.details}</p>
-            </div>
-            <>
-      <MDBBtn rippleDuration={5000} rippleColor='danger' color='light' onClick={toggleShow}>Add Product</MDBBtn>
-      <MDBModal show={optSmModal} tabIndex='-1' setShow={setOptSmModal}>
-        <MDBModalDialog size='sm'>
-          <MDBModalContent>
-            <MDBModalHeader>
-              <MDBModalTitle>Add Product </MDBModalTitle>
-              <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
-            </MDBModalHeader>
-            <MDBModalBody>
-              {/* ______________________form________________________ */}
-
-
-                {/* ____________________________________________________ */}
-            </MDBModalBody>
-          </MDBModalContent>
-        </MDBModalDialog>
-      </MDBModal>
-    </>
-            
-      </MDBCol>
+      
     </MDBRow>
         </div>
     )

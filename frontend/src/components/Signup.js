@@ -80,7 +80,7 @@ import React from 'react'
     </div>
               
               <div className="footer">
-            <button type="button" className="btn" onClick={(e)=>handlPost(e)}> Signup </button>
+            <button type="button" className="botn" onClick={(e)=>handlPost(e)}> Signup </button>
           </div>
           
               

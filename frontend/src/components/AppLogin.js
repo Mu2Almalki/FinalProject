@@ -30,8 +30,8 @@ changeState(){
 
     render() {
       const {isLogginActive} =this.state;
-      const current =isLogginActive? "Signup":"Login";
-      const currentActive = isLogginActive? "login": "signup";
+      const current =isLogginActive? "Register":"Login";
+      const currentActive = isLogginActive? "login": "Register";
         return ( 
             <div className="signin">
             <div className="login">

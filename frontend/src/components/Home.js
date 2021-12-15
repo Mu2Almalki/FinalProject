@@ -45,14 +45,6 @@ import { MDBCard, MDBCardTitle, MDBCardText, MDBCardOverlay, MDBCardImage , MDBR
                console.log("hi")
                return (
                    <>
-                   <div className="maindiv">
-                       
-                      <img src={item.imageUser} className="photo"/>
-                       <h1>{item.name}</h1>
-                       <p> {item.details} </p>
-                       <Link to={`/Seller/${item._id}`}>more</Link>
-                            
-                   </div> 
                    <div>
                    <MDBRow className='row-cols-1 row-cols-md-3 g-4'>
                    <MDBCol>
