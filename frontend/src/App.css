@@ -203,3 +203,7 @@ input :focus{
 .col-example1{
   border-left: solid gray  ;
 }
+.ct{
+ display: flex;
+ flex-direction: column;
+}

@@ -9,8 +9,8 @@ export default function Main() {
         <div>
         <Card className="bg-dark text-black">
   <Card.Img src={image} alt="Card image" />
-  <Card.ImgOverlay>
-    <Card.Title className='ct'>Card title</Card.Title>
+  <Card.ImgOverlay className='ct'>
+    <Card.Title className='ct1'>Card title</Card.Title>
     <Card.Text>
       This is a wider card with supporting text below as a natural lead-in to
       additional content. This content is a little bit longer.

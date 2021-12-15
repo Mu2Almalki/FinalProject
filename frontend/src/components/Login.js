@@ -39,7 +39,7 @@ import logoLogin from '../image/logo-login.jpg'
       <div className="base.container" ref={props.containerRef}>
         <div className="header">Login</div>
         <div className="content">
-          <div className="image"><img className="img1" src={logoLogin}/></div>
+          <div className="image"><img className="img1" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3jabCF5UQ_5E-OqxySND71-UO6fh7d7Mf6A&usqp=CAU"}/></div>
           <div className="form">
           <div className="form-group">
                 <label htmlFor="email" >Email</label>

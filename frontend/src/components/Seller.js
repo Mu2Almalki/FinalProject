@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import '../App.css';
 import { useParams , useNavigate} from "react-router-dom";
-import { MDBCard, MDBCardTitle, MDBCardText, MDBCardOverlay, MDBCardImage , MDBCol ,MDBRow } from 'mdb-react-ui-kit';
+import { MDBModalHeader, MDBBtn, MDBModal, MDBModalDialog, MDBModalContent , MDBCol ,MDBRow,
+  MDBModalTitle, MDBModalBody } from 'mdb-react-ui-kit';
 import React from 'react'
 
 
@@ -25,6 +26,11 @@ export default function Seller() {
     const [product , setProduct]=useState([])
 
 
+    const [optSmModal, setOptSmModal] = useState(false);
+
+  const toggleShow = () => setOptSmModal(!optSmModal);
+
+
     useEffect(() => {
         axios.get(`http://localhost:3001/product/getProduct/${id}`).then((res) => {
           console.log(res);
@@ -44,7 +50,7 @@ export default function Seller() {
   
       <MDBCol md='8' className='col-example'>
       
-        <div className='pb-3'><h2>products</h2> <hr/>
+        <div className='pb-3'><h2>My Products</h2> <hr/>
         </div>
        
         <MDBRow>
@@ -72,6 +78,25 @@ export default function Seller() {
             <h1>{user.name}</h1>
             <p>{user.details}</p>
             </div>
+            <>
+      <MDBBtn rippleDuration={5000} rippleColor='danger' color='light' onClick={toggleShow}>Add Product</MDBBtn>
+      <MDBModal show={optSmModal} tabIndex='-1' setShow={setOptSmModal}>
+        <MDBModalDialog size='sm'>
+          <MDBModalContent>
+            <MDBModalHeader>
+              <MDBModalTitle>Add Product </MDBModalTitle>
+              <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
+            </MDBModalHeader>
+            <MDBModalBody>
+              {/* ______________________form________________________ */}
+
+
+                {/* ____________________________________________________ */}
+            </MDBModalBody>
+          </MDBModalContent>
+        </MDBModalDialog>
+      </MDBModal>
+    </>
             
       </MDBCol>
     </MDBRow>
