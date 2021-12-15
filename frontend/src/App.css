@@ -1,7 +1,7 @@
+
 .App {
   text-align: center;
 }
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -101,58 +101,15 @@ input :focus{
   font-size: 21px;
   padding: 5px 20px;
   border: 0;
-  background-color: #3498db;
-  color: #fff;
+  background-color: #474949;
+  /* color: #fff; */
   border-radius: 3px;
   transition: all 250ms ease-in-out;
   cursor: pointer;
 
 }
-.btn :hover{
-  background-color: #2386c8;
-}
-.btn :focus{
-  outline: none;
-}
 /* ________________________________ */
-/* .login{
-  width: 27em;
-  height: 40em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5px;
-  position: relative;
-  z-index: 99;
 
-}
-
-.right-side{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 90%;
-  background-color: royalblue;
-  width: 100%;
-  position: absolute;
-  right: -34%;
-  border-radius: 6px;
-  z-index: 1;
-  transition: all 400ms ease-in-out;
-  cursor: pointer;
-  box-shadow: 0px 0px 12px 2px rgba(red, green, blue, alpha);
-
-}
-.right-side .right{
-  right: -40%;
-  align-items: flex-end;
-
-
-}
-.right-side .right :hover{
-  right: -45%;
-
-} */
 .login {
   width: 27em;
   height: 40em;
@@ -183,7 +140,7 @@ input :focus{
     flex-direction: column;
     justify-content: center;
     height: 90%;
-    background-color: #3498db;
+    background-color: #f5c7c7;
     width: 100%;
     position: absolute;
     right: -34%;
@@ -240,4 +197,9 @@ input :focus{
   align-items: center;
   font-family: "Open Sans", sans-serif;
 
+}
+/* ___________________________________ */
+
+.col-example1{
+  border-left: solid gray  ;
 }

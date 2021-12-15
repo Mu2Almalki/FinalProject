@@ -53,7 +53,7 @@ import logoLogin from '../image/logo-login.jpg'
 
         </div>
         <div className="footer">
-          <button type="button" className="btn" onClick={(e)=>handlPost(e)} class="btn btn-primary"> Login</button>
+          <button type="button" className="btn" onClick={(e)=>handlPost(e)} > Login</button>
         </div>
 
       </div>

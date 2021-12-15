@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import '../App.css';
 import {  Link  } from "react-router-dom";
+import { MDBCard, MDBCardTitle, MDBCardText, MDBCardOverlay, MDBCardImage , MDBRow ,MDBCol , MDBCardBody , MDBCardLink} from 'mdb-react-ui-kit';
 
  function Home() {
     const [user , setUser]=useState([]);
@@ -43,6 +44,7 @@ import {  Link  } from "react-router-dom";
            user.map((item) =>{
                console.log("hi")
                return (
+                   <>
                    <div className="maindiv">
                        
                       <img src={item.imageUser} className="photo"/>
@@ -51,6 +53,29 @@ import {  Link  } from "react-router-dom";
                        <Link to={`/Seller/${item._id}`}>more</Link>
                             
                    </div> 
+                   <div>
+                   <MDBRow className='row-cols-1 row-cols-md-3 g-4'>
+                   <MDBCol>
+                   <MDBCard>
+                   <MDBCardImage
+                      src={item.imageUser}
+                        alt='Hollywood Sign on The Hill'
+                                 position='top'
+                                       />
+                   <MDBCardBody>
+                  <MDBCardTitle>{item.name}</MDBCardTitle>
+                   <MDBCardText>
+                       {item.details}
+                      </MDBCardText>
+                      <MDBCardLink ><Link to={`/Seller/${item._id}`}>more</Link></MDBCardLink>
+                       </MDBCardBody>
+                       </MDBCard>
+                      </MDBCol>
+                       </MDBRow>
+
+                   </div>
+                   </>
+                  
                )
 
            })
@@ -60,3 +85,4 @@ import {  Link  } from "react-router-dom";
     </div> );
       }
 export default Home;
+
