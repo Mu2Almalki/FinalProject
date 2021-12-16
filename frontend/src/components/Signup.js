@@ -48,6 +48,7 @@ import React from 'react'
                     console.log(token)
                     localStorage.setItem("token", token);
                     navegate(`/Seller/${res.data.user}`);
+                    navegate(`/Buyer/${res.data.user}`);
                   }
                 
             })

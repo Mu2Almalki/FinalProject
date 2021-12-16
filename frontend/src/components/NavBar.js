@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useNavigate ,Link  } from "react-router-dom";
 import { Navbar , Container , Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AboutUs from './AboutUs'
@@ -10,15 +10,27 @@ import Seller from '../components/Seller'
 import Buyer from '../components/Buyer'
 import Main from "./Main";
 
+
 import Cart from '../components/Cart'
 function NavBar () {
+
+
+  let navigate = useNavigate()
+    const logout=(e)=>{
+        e.preventDefault();
+        localStorage.removeItem("token")
+        navigate('/')
+
+    }
+
+
     return (  
      <>
 
 {/* // <!-- Navbar --> */}
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav className="navbar navbar-expand-lg navbar-light bg-light">
   {/* <!-- Container wrapper --> */}
-  <div class="container-fluid">
+  <div className="container-fluid">
     {/* <!-- Toggle button --> */}
     <button
       class="navbar-toggler"
@@ -32,9 +44,9 @@ function NavBar () {
       <i class="fas fa-bars"></i>
     </button>
     {/* <!-- Collapsible wrapper --> */}
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
       {/* <!-- Navbar brand --> */}
-      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+      <a className="navbar-brand mt-2 mt-lg-0" href="#">
         <img
           src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.png"
           height="15"
@@ -44,8 +56,8 @@ function NavBar () {
       </a>
       {/* <!-- Left links --> */}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-        <Link  class="nav-link" exact to="/">  Home </Link>
+        <li className="nav-item">
+        <Link  className="nav-link" exact to="/">  Home </Link>
         </li>
         <li class="nav-item">
           <Link class="nav-link"  to="/Home"> business </Link>
@@ -58,10 +70,10 @@ function NavBar () {
     </div>
     {/* <!-- Collapsible wrapper --> */}
     {/* <!-- Right elements --> */}
-    <div class="d-flex align-items-center">
+    <div className="d-flex align-items-center">
       {/* <!-- Icon --> */}
       <Link to="/Cart"> <a class="text-reset me-3" href="#"> 
-        <i class="fas fa-shopping-cart"></i>
+        <i className="fas fa-shopping-cart"></i>
       </a></Link>
       {/* <!-- Notifications --> */}
       {/* <a
@@ -91,7 +103,7 @@ function NavBar () {
       </ul> */}
       {/* <!-- Avatar --> */}
       <Link to="/AppLogin"
-        class="dropdown-toggle d-flex align-items-center hidden-arrow"
+        className="dropdown-toggle d-flex align-items-center hidden-arrow"
         href="#"
         id="navbarDropdownMenuLink"
         role="button"
@@ -100,26 +112,31 @@ function NavBar () {
       >
         <img
           src="https://mdbcdn.b-cdn.net/img/new/avatars/2.jpg"
-          class="rounded-circle"
+          className="rounded-circle"
           height="25"
           alt="Black and White Portrait of a Man"
           loading="lazy"
         />
       </Link>
+      <Link to="/Logout" className="link" onClick={(e)=>{logout(e)}} className="dropdown-item"> Logout</Link>
       <ul
-        class="dropdown-menu dropdown-menu-end"
+        className="dropdown-menu dropdown-menu-end"
         aria-labelledby="navbarDropdownMenuLink"
       >
+     <li> 
+    
+     <a className="dropdown-item" href="#">My profile</a>
+     
+       </li> 
+        
         <li>
-          <a class="dropdown-item" href="#">My profile</a>
+          <Link className="dropdown-item" to="/Seller/:id">Settings</Link>
         </li>
         <li>
-          <a class="dropdown-item" href="#">Settings</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">Logout</a>
+          <Link to="/Logout" className="link" onClick={(e)=>{logout(e)}} className="dropdown-item"> Logout</Link>
         </li>
       </ul>
+
     </div>
     {/* <!-- Right elements --> */}
   </div>

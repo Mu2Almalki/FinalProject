@@ -8,7 +8,7 @@ import logoLogin from '../image/logo-login.jpg'
 
  function Login(props) {
    
-      let navigate = useNavigate()
+  let navegate = useNavigate()
 
     const [User , setUser]=useState([]);
     const [addEmail,setAddEmail]=useState('')
@@ -27,8 +27,8 @@ import logoLogin from '../image/logo-login.jpg'
             const token = res.data.token;
             console.log(token)
             localStorage.setItem("token", token);
-            
-            navigate("/");
+            navegate(`/Seller/${res.data.user}`);
+            navegate(`/Buyer/${res.data.user}`);
 
             setUser(res.data);
           }

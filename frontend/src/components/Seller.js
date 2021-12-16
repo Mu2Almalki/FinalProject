@@ -3,12 +3,29 @@ import axios from "axios";
 import '../App.css';
 import { useParams , useNavigate} from "react-router-dom";
 import { MDBModalHeader, MDBBtn, MDBModal, MDBModalDialog, MDBModalContent , MDBCol ,MDBRow,
-  MDBModalTitle, MDBModalBody } from 'mdb-react-ui-kit';
+  MDBModalTitle, MDBModalBody , MDBModalFooter } from 'mdb-react-ui-kit';
 import React from 'react'
+import {Form,Row,Col,Button }from 'react-bootstrap'
 
 
 export default function Seller() {
 
+// add product
+  function handlPost(e){
+    e.preventDefault()
+            axios.post(`http://localhost:3001/books/book/${id}` , {
+                // image:addImgBook ,
+                // title: addTitle,
+                // pages:addPages ,
+                // price:addPrice ,
+                
+            })
+            .then((res) => {
+                console.log(res.data);
+              
+            })
+        }
+// 
 
     const { id } = useParams();
 
@@ -25,10 +42,8 @@ export default function Seller() {
     const [addPrice , setAddPrice]=useState('')
     const [product , setProduct]=useState([])
 
-
+    const [scrollableModal, setScrollableModal] = useState(false);
     const [optSmModal, setOptSmModal] = useState(false);
-
-  const toggleShow = () => setOptSmModal(!optSmModal);
 
 
     useEffect(() => {
@@ -56,24 +71,69 @@ export default function Seller() {
               <p>{user.details}</p>
               </div>
               <>
-        <MDBBtn rippleDuration={5000} rippleColor='danger' color='light' onClick={toggleShow}>Add Product</MDBBtn>
-        <MDBModal show={optSmModal} tabIndex='-1' setShow={setOptSmModal}>
-          <MDBModalDialog size='sm'>
-            <MDBModalContent>
-              <MDBModalHeader>
-                <MDBModalTitle>Add Product </MDBModalTitle>
-                <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
-              </MDBModalHeader>
-              <MDBModalBody>
+        <MDBBtn rippleDuration={5000} rippleColor='danger' color='light'onClick={() => setScrollableModal(!scrollableModal)}>Add Product</MDBBtn>
+
+<MDBModal show={scrollableModal} setShow={setScrollableModal} tabIndex='-1'>
+  <MDBModalDialog scrollable>
+    <MDBModalContent>
+      <MDBModalHeader>
+        <MDBModalTitle>Add Product</MDBModalTitle>
+        <MDBBtn
+          className='btn-close'
+          color='none'
+          onClick={() => setScrollableModal(!scrollableModal)}
+        ></MDBBtn>
+      </MDBModalHeader>
+      <MDBModalBody>
                 {/* ______________________form________________________ */}
+
+                <Form>
+  <Row className="mb-3">
+<Form.Group className="position-relative mb-3">
+            <Form.Label>image</Form.Label>
+            <Form.Control
+              type="file"
+              required
+              name="file"
+              // onChange={handleChange}
+            />
+           
+          </Form.Group>
+
+    <Form.Group as={Col} controlId="formGridPassword">
+      <Form.Label>Name</Form.Label>
+      <Form.Control type="text" placeholder="name" />
+    </Form.Group>
+  </Row>
+
+  <Form.Group className="mb-3" controlId="formGridAddress1">
+    <Form.Label>Detils</Form.Label>
+    <Form.Control placeholder="" />
+  </Form.Group>
+
+  
+
+  <Row className="mb-4">
+    <Form.Group as={Col} controlId="formGridCity">
+      <Form.Label>Price</Form.Label>
+      <Form.Control />
+    </Form.Group>
+
+   
+  </Row>
+
+  <Button variant="primary" type="submit">
+    Add
+  </Button>
+</Form>
   
   
                   {/* ____________________________________________________ */}
-              </MDBModalBody>
-            </MDBModalContent>
-          </MDBModalDialog>
-        </MDBModal>
-      </>
+                  </MDBModalBody>
+          </MDBModalContent>
+        </MDBModalDialog>
+      </MDBModal>
+    </>
               
         </MDBCol>
   
