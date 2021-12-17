@@ -9,9 +9,10 @@ import AppLogin from "./AppLogin";
 import Seller from '../components/Seller'
 import Buyer from '../components/Buyer'
 import Main from "./Main";
+import Cart from '../components/Cart';
+import Profile from "./Profile";
 
 
-import Cart from '../components/Cart'
 function NavBar () {
 
 
@@ -118,6 +119,8 @@ function NavBar () {
           loading="lazy"
         />
       </Link>
+      <Link to="/Profile" className="dropdown-item"> Profile</Link>
+
       <Link to="/Logout" className="link" onClick={(e)=>{logout(e)}} className="dropdown-item"> Logout</Link>
       <ul
         className="dropdown-menu dropdown-menu-end"
@@ -153,7 +156,7 @@ function NavBar () {
           <Route path="/AboutUs" element={<AboutUs/>} />
           <Route path="/Seller/:id" element={<Seller/>}/>
           <Route path="/Buyer/:id" element={<Buyer/>}/>
-
+          <Route path="/Profile" element={<Profile/>}/>
           <Route path="/Cart" element={<Cart/>}/>
 </Routes> 
   </>

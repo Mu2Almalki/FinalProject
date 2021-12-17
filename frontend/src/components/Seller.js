@@ -10,29 +10,12 @@ import {Form,Row,Col,Button }from 'react-bootstrap'
 
 export default function Seller() {
 
-// add product
-  function handlPost(e){
-    e.preventDefault()
-            axios.post(`http://localhost:3001/books/book/${id}` , {
-                // image:addImgBook ,
-                // title: addTitle,
-                // pages:addPages ,
-                // price:addPrice ,
-                
-            })
-            .then((res) => {
-                console.log(res.data);
-              
-            })
-        }
-// 
-
     const { id } = useParams();
 
     let navegate =useNavigate()  
 
   const [loading, setLoading] = useState(true);
-    const [user , setUser]=useState([]);
+    const [user , setUser]=useState();
     const [addName, setAddName] = useState ('')
     const [addImageUser, setAddImgUser ]= useState (null)
     const [addDetails , setAddDetails]= useState('')
@@ -44,15 +27,31 @@ export default function Seller() {
 
     const [scrollableModal, setScrollableModal] = useState(false);
     const [optSmModal, setOptSmModal] = useState(false);
-
-
     useEffect(() => {
-        axios.get(`http://localhost:3001/product/getProduct/${id}`).then((res) => {
-          console.log(res);
-          setUser(res.data);
-          setLoading(false);
-        });
-      }, []);
+      axios.get(`http://localhost:3001/product/getProduct/${id}`).then((res) => {
+        console.log(res.data);
+        setUser(res.data);
+        setProduct(res.data.products);
+        setLoading(false);
+      });
+    }, []);
+
+    // add product
+  function handlPost(e){
+    e.preventDefault()
+            axios.post(`http://localhost:3001/product/post/${id}` , {
+                image:addImg ,
+                nameProduct:addNameP,
+                description:addDis,
+                price:addPrice
+            
+            })
+            .then((res) => {
+                console.log(res.data);
+                setUser(res.data);
+                setProduct(res.data.products);
+            })
+        }
 
       if (loading) {
           console.log('hi'+id)
@@ -95,6 +94,7 @@ export default function Seller() {
               type="file"
               required
               name="file"
+              onChange={(e) => setAddImg(e.target.value)}
               // onChange={handleChange}
             />
            
@@ -102,13 +102,13 @@ export default function Seller() {
 
     <Form.Group as={Col} controlId="formGridPassword">
       <Form.Label>Name</Form.Label>
-      <Form.Control type="text" placeholder="name" />
+      <Form.Control type="text" placeholder="name" onChange={(e) => setAddNameP(e.target.value)} />
     </Form.Group>
   </Row>
 
   <Form.Group className="mb-3" controlId="formGridAddress1">
     <Form.Label>Detils</Form.Label>
-    <Form.Control placeholder="" />
+    <Form.Control placeholder="" onChange ={(e)=> setAddDis(e.target.value)+"SR"} />
   </Form.Group>
 
   
@@ -116,13 +116,13 @@ export default function Seller() {
   <Row className="mb-4">
     <Form.Group as={Col} controlId="formGridCity">
       <Form.Label>Price</Form.Label>
-      <Form.Control />
+      <Form.Control onChange ={(e)=> setAddPrice(e.target.value)+"SR"} />
     </Form.Group>
 
    
   </Row>
 
-  <Button variant="primary" type="submit">
+  <Button variant="primary" type="submit" onClick={(e)=>{handlPost(e)}} style = {{backgroundColor: "black" ,color: "White"}}>
     Add
   </Button>
 </Form>
@@ -143,10 +143,10 @@ export default function Seller() {
         </div>
        
         <MDBRow>
-        {user.products.map((item)=>{
+        {product.map((item)=>{
              return(
-              <div>
-              <MDBCol md='6' className='col-example'>
+              <div> 
+            <MDBCol md='6' className='col-example'>
             
             <img src={item.image}/>
             <h2>{item.nameProduct} </h2>

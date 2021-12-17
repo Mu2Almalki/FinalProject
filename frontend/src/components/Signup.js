@@ -41,15 +41,20 @@ import React from 'react'
             })
             .then((res) => {
                 console.log(res.data);
-                setUser(res.data);
+                setUser(res.data.user);
                 if (res.data.user) {
                     console.log(res.data)
-                    const token = res.data.token;
+                    const token = res.data.user;
                     console.log(token)
                     localStorage.setItem("token", token);
-                    navegate(`/Seller/${res.data.user}`);
-                    navegate(`/Buyer/${res.data.user}`);
-                  }
+                    const userSign = jwt(token);
+                    console.log(userSign.userType)
+                    // if(userSign.==="seller"){
+                       navegate(`/Seller/${res.data.user}`);
+                    // }else{
+                    //  navegate(`/Buyer/${res.data.user}`);
+                  // }
+                }
                 
             })
         }

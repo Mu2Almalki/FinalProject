@@ -39,19 +39,19 @@ const handleErrors = (err)=>{
 
 const maxAge=3*24*60*60;
 
-const createToken =(id)=> {
-    return jwt.sign({id},'net secret',{
+const createToken =(id,email,type)=> {
+    return jwt.sign({id,email,type},'net secret',{
     expiresIn:maxAge
 })}
 
 module.exports.signup_post= async (req,res)=>{
-    const {email , password , name , userType}=req.body;
+    const {email , password , name , userType }=req.body;
 
     try{
       const user = await  User.create({email , password ,  name , userType});
-      const token =createToken(user._id);
+      const token =createToken(user._id,user.email,user.userType);
       res.cookie('jwt',token,{httpOnly:true, maxAge:maxAge*1000});
-      res.status(201).json({user:user._id,token:token});
+      res.status(201).json({user:token});
 
 
     }
@@ -67,10 +67,9 @@ module.exports.login_post= async(req,res)=>{
 
     try {
         const user = await User.login(email, password)
-        const token =createToken(user._id);
+        const token =createToken(user._id,user.email,user.userType);
         res.cookie('jwt',token,{httpOnly:true, maxAge:maxAge*1000});
-        res.status(200).json({user:user._id,token:token})
-
+        res.status(200).json({user:token})
     }
    catch(err){
        const errors = handleErrors(err)

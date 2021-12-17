@@ -226,3 +226,27 @@ margin-top:10px;
 .simg{
   border-radius: 50%;
 }
+.main{
+  margin:1%;
+  padding-left:15%;
+  padding-right: 15%;
+  background-image: url("https://c8.alamy.com/comp/RAR8NA/seamless-doodle-style-background-money-gold-business-and-finance-texture-RAR8NA.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* profile */
+.pro{
+  display:grid ;
+  grid-template-columns:auto auto auto auto;
+
+}
+.pro1{
+  grid-column: 1/2;
+}
+.pro2{
+  border: grey solid;
+  grid-column: 2/4;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}

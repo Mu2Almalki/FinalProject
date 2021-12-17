@@ -20,10 +20,11 @@ module.exports={
                 price:req.body.price,
                 quontity:req.body.quontity,
             }).then(async product=> {
-                User.findByIdAndUpdate(req.params.id ,{$push:{products:product}})
+                 User.findByIdAndUpdate(req.params.id ,{$push:{products:product}})
                 .then(async user=>{
+                    await product.save()
                     await user.save()
-                    res.send(product)
+                    await res.send(user)
                 })
              } )
         })

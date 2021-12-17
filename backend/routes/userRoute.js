@@ -30,6 +30,27 @@ router.get('/buyer/:id', async (req , res)=>{
     console.log("We are online")
     res.send(users)
 })
+// update user
+router.put('/update/:id', async (request,response)=> {
+    const allowedUpdates = ['name', 'imageUser', 'details'];
+    const updates = Object.keys(request.body)
+    const isValidOperation  = updates.every((update)=> allowedUpdates.includes(update))
+    if(!isValidOperation) {
+        return response.status(400).send({erro: 'Invalid updates'});
+    }
+    try {
+        const user = await User.findOne({_id: request.params.id});
+        if(!user) {return response.status(404).send(404).send()}
+        updates.forEach((update)=> {
+            user[update] = request.body[update]
+        })
+        await user.save()
+        response.status(200).send(user)
+    } catch(e){
+        response.status(400).send(e)
+        console.error(e)
+    }
+ })
 // cart
 
 // router.post('/cart/post',async (req,res)=>{
