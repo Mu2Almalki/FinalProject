@@ -5,36 +5,10 @@
   font-family: 'Fruktur', cursive;
   font-family: 'Merriweather', serif;
 }
+/* main page */
+/* .ct1{
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+} */
 /* login */
 .base.container{
   width: 100%;
@@ -243,6 +217,7 @@ margin-top:10px;
 }
 .pro1{
   grid-column: 1/2;
+  margin-bottom: 50px;
 }
 .pro2{
   border: grey solid;
@@ -253,4 +228,37 @@ margin-top:10px;
 /* navbar */
 #navd{
   margin-right: 80px;
+}
+.imgipro{
+  width: 209px;
+  height: 209px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #FFFFFF;
+  box-shadow: 0 0 8px 3px #B8B8B8;
+  position: relative;
+
+}
+
+.imgpp{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+#ipro{
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  /* border: 1px solid; */
+  border-radius: 50%;
+  /* padding: 11px; */
+  height: 30px;
+  width: 30px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: cornflowerblue;
+  box-shadow: 0 0 8px 3px #B8B8B8;
 }

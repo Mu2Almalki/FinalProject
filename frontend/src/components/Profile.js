@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams , useNavigate} from "react-router-dom";
 import jwt_decode from "jwt-decode"
+import ImgProfile from './ImgProfile';
 
 export default function Profile() {
 
@@ -84,11 +85,12 @@ export default function Profile() {
         <div className='pro'> 
            <div className='pro1'>
                 <h1>My profile </h1>
-                <Row xs={1} md={2} className="g-4">
-  {/* { user.map((item) => ( */}
+                {/* <Row xs={1} md={2} className="g-4"> */}
     <Col>
       <Card>
-        <Card.Img variant="top" src={user.imageUser} />
+        {/* <Card.Img className='imgcardpro' variant="top" src={user.imageUser} /> */}
+        
+ <ImgProfile/>
         <Card.Body>
           <Card.Title>{user.name}</Card.Title>
           <Card.Text>
@@ -97,16 +99,18 @@ export default function Profile() {
         </Card.Body>
       </Card>
     </Col>
-  {/* // ))} */}
-</Row>
+    
+{/* </Row> */}
                 </div>
-           <div className='pro2'>
-           <form>
-  <div class="custom-file">
+           <Card className='pro2'>
+           <Card.Body>
+           <Card.Text>
+
+  {/* <div class="custom-file"> */}
       <br/>
     <input onChange ={(e)=> setAddImg(e.target.value)} type="file" class="custom-file-input" id="customFile"/>
     <label class="custom-file-label" for="customFile">Choose file</label>
-  </div>
+  {/* </div> */}
   <br/>
   <label>
     Name:
@@ -118,9 +122,10 @@ export default function Profile() {
 </textarea>
 <br/>
 <button onClick={(e)=>{handlUpdate(e)}}>Save</button>
-  
-</form>
-           </div>
+</Card.Text>
+
+</Card.Body>
+           </Card>
         </div>
     )
 }

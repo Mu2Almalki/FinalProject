@@ -1,22 +1,21 @@
-import { BrowserRouter as Router, Route, Routes, useNavigate ,Link  } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useNavigate ,Link, useParams  } from "react-router-dom";
 import { Navbar , Container , Nav ,NavDropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AboutUs from './AboutUs'
 import Home from "./Home";
-import Login from "../components/Login";
-import Signup from "./Signup";
 import AppLogin from "./AppLogin";
 import Seller from '../components/Seller'
 import Buyer from '../components/Buyer'
 import Main from "./Main";
 import Cart from '../components/Cart';
 import Profile from "./Profile";
-import { MDBModalHeader, MDBBtn, MDBModal, MDBModalDialog, MDBModalContent , MDBCol ,MDBNavbarItem,
-  MDBNavbarNav, MDBCollapse , MDBIcon  ,MDBNavbarBrand , MDBNavbar , MDBContainer} from 'mdb-react-ui-kit';
   import jwt_decode from "jwt-decode"
+  // import { useParams } from "react-router-dom";
 
 
 function NavBar () {
+
+  // const id = useParams;
 
   let decodedData ;
   const storedToken = localStorage.getItem("token");
@@ -67,6 +66,29 @@ function NavBar () {
 
       </Nav>
       <Nav className="d-flex align-items-center" id="navd">
+      {function(){
+    if(decodedData!=undefined){
+      <Link to="/AppLogin"
+      className="dropdown-toggle d-flex align-items-center hidden-arrow"
+      href="#"
+      id="navbarDropdownMenuLink"
+      role="button"
+      dataMdbToggle="dropdown"
+      ariaExpanded="false"
+    >
+      <img
+        src="https://mdbcdn.b-cdn.net/img/new/avatars/2.jpg"
+        className="rounded-circle"
+        height="25"
+        alt="Black and White Portrait of a Man"
+        loading="lazy"
+      />
+    </Link>
+      
+    } 
+    // else if(decodedData.id==id){ }
+  }}
+      
       <Link to="/AppLogin"
         className="dropdown-toggle d-flex align-items-center hidden-arrow"
         href="#"
@@ -83,8 +105,9 @@ function NavBar () {
           loading="lazy"
         />
       </Link>
+
       <NavDropdown > 
-          <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+          <NavDropdown.Item ><Link  className="nav-link" to="/Profile">My Profile</Link></NavDropdown.Item>
           <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item href="#action5">
@@ -94,12 +117,13 @@ function NavBar () {
         <Link to="/Cart"> <a class="text-reset me-3" href="#"> 
         <i className="fas fa-shopping-cart"></i>
       </a></Link>
+     
         
       </Nav>
     </Navbar.Collapse>
   </Container>
 </Navbar>
-
+   
 
 
   <Routes>
@@ -114,7 +138,7 @@ function NavBar () {
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/Cart" element={<Cart/>}/>
 </Routes> 
-  </div>
+ </div>
 
   
     );
@@ -122,9 +146,3 @@ function NavBar () {
 }
 
 export default NavBar;
-
-
-// {(function(){
-//   if(decodedData!=undefined){
-//     navbar
-//     if(decodedData.id==id){
