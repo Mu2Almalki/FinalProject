@@ -49,11 +49,11 @@ import React from 'react'
                     localStorage.setItem("token", token);
                     const userSign = jwt(token);
                     console.log(userSign.userType)
-                    // if(userSign.==="seller"){
-                       navegate(`/Seller/${res.data.user}`);
-                    // }else{
-                    //  navegate(`/Buyer/${res.data.user}`);
-                  // }
+                    if(userSign.type==="seller"){
+                       navegate(`/Seller/${userSign.id}`);
+                    }else{
+                     navegate(`/Buyer/${userSign.id}`);
+                  }
                 }
                 
             })

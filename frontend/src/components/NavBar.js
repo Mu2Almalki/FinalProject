@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes, useNavigate ,Link  } from "react-router-dom";
-import { Navbar , Container , Nav } from 'react-bootstrap';
+import { Navbar , Container , Nav ,NavDropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AboutUs from './AboutUs'
 import Home from "./Home";
@@ -11,9 +11,25 @@ import Buyer from '../components/Buyer'
 import Main from "./Main";
 import Cart from '../components/Cart';
 import Profile from "./Profile";
+import { MDBModalHeader, MDBBtn, MDBModal, MDBModalDialog, MDBModalContent , MDBCol ,MDBNavbarItem,
+  MDBNavbarNav, MDBCollapse , MDBIcon  ,MDBNavbarBrand , MDBNavbar , MDBContainer} from 'mdb-react-ui-kit';
+  import jwt_decode from "jwt-decode"
 
 
 function NavBar () {
+
+  let decodedData ;
+  const storedToken = localStorage.getItem("token");
+  if (storedToken){
+    decodedData = jwt_decode(storedToken, { payload: true });
+     console.log(decodedData);
+     let expirationDate = decodedData.exp;
+      var current_time = Date.now() / 1000;
+      if(expirationDate < current_time)
+      {
+          localStorage.removeItem("token");
+      }
+   }
 
 
   let navigate = useNavigate()
@@ -25,91 +41,39 @@ function NavBar () {
     }
 
 
-    return (  
-     <>
+  return(
+    <div>
 
-{/* // <!-- Navbar --> */}
-<nav className="navbar navbar-expand-lg navbar-light bg-light">
-  {/* <!-- Container wrapper --> */}
-  <div className="container-fluid">
-    {/* <!-- Toggle button --> */}
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-    {/* <!-- Collapsible wrapper --> */}
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      {/* <!-- Navbar brand --> */}
-      <a className="navbar-brand mt-2 mt-lg-0" href="#">
-        <img
+<Navbar bg="light" expand="lg" >
+  <Container fluid>
+    <Navbar.Brand  className="navbar-brand mt-2 mt-lg-0" href="#">
+      <img
           src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.png"
           height="15"
           alt="MDB Logo"
           loading="lazy"
-        />
-      </a>
-      {/* <!-- Left links --> */}
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-        <Link  className="nav-link" exact to="/">  Home </Link>
-        </li>
-        <li class="nav-item">
-          <Link class="nav-link"  to="/Home"> business </Link>
-        </li>
-        <li class="nav-item">
-       <Link class="nav-link" to="/AboutUs">About Us </Link>
-        </li>
-      </ul>
-      {/* <!-- Left links --> */}
-    </div>
-    {/* <!-- Collapsible wrapper --> */}
-    {/* <!-- Right elements --> */}
-    <div className="d-flex align-items-center">
-      {/* <!-- Icon --> */}
-      <Link to="/Cart"> <a class="text-reset me-3" href="#"> 
-        <i className="fas fa-shopping-cart"></i>
-      </a></Link>
-      {/* <!-- Notifications --> */}
-      {/* <a
-        class="text-reset me-3 dropdown-toggle hidden-arrow"
-        href="#"
-        id="navbarDropdownMenuLink"
-        role="button"
-        data-mdb-toggle="dropdown"
-        aria-expanded="false"
+          />
+          </Navbar.Brand>
+    <Navbar.Toggle aria-controls="navbarScroll" />
+    <Navbar.Collapse id="navbarScroll">
+      <Nav
+        className="me-auto my-2 my-lg-0"
+        style={{ maxHeight: '100px' }}
+        navbarScroll
       >
-        <i class="fas fa-bell"></i>
-        <span class="badge rounded-pill badge-notification bg-danger">1</span>
-      </a> */}
-      {/* <ul
-        class="dropdown-menu dropdown-menu-end"
-        aria-labelledby="navbarDropdownMenuLink"
-      >
-        <li>
-          <a class="dropdown-item" href="#">Some news</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">Another news</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </li>
-      </ul> */}
-      {/* <!-- Avatar --> */}
+        <Nav.Link ><Link  className="nav-link" exact to="/">  Home </Link></Nav.Link>
+        <Nav.Link ><Link className="nav-link"  to="/Home"> business </Link></Nav.Link>
+        <Nav.Link ><Link className="nav-link" to="/AboutUs">About Us </Link></Nav.Link>
+
+      </Nav>
+      <Nav className="d-flex align-items-center" id="navd">
       <Link to="/AppLogin"
         className="dropdown-toggle d-flex align-items-center hidden-arrow"
         href="#"
         id="navbarDropdownMenuLink"
         role="button"
-        data-mdb-toggle="dropdown"
-        aria-expanded="false"
+        dataMdbToggle="dropdown"
+        ariaExpanded="false"
       >
         <img
           src="https://mdbcdn.b-cdn.net/img/new/avatars/2.jpg"
@@ -119,33 +83,24 @@ function NavBar () {
           loading="lazy"
         />
       </Link>
-      <Link to="/Profile" className="dropdown-item"> Profile</Link>
-
-      <Link to="/Logout" className="link" onClick={(e)=>{logout(e)}} className="dropdown-item"> Logout</Link>
-      <ul
-        className="dropdown-menu dropdown-menu-end"
-        aria-labelledby="navbarDropdownMenuLink"
-      >
-     <li> 
-    
-     <a className="dropdown-item" href="#">My profile</a>
-     
-       </li> 
-        
-        <li>
-          <Link className="dropdown-item" to="/Seller/:id">Settings</Link>
-        </li>
-        <li>
+      <NavDropdown > 
+          <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+          <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item href="#action5">
           <Link to="/Logout" className="link" onClick={(e)=>{logout(e)}} className="dropdown-item"> Logout</Link>
-        </li>
-      </ul>
+          </NavDropdown.Item>
+        </NavDropdown>
+        <Link to="/Cart"> <a class="text-reset me-3" href="#"> 
+        <i className="fas fa-shopping-cart"></i>
+      </a></Link>
+        
+      </Nav>
+    </Navbar.Collapse>
+  </Container>
+</Navbar>
 
-    </div>
-    {/* <!-- Right elements --> */}
-  </div>
-  {/* <!-- Container wrapper --> */}
-</nav>
-{/* // <!-- Navbar --> */}
+
 
   <Routes>
           <Route exact path="/" element={<Main />} />
@@ -159,7 +114,7 @@ function NavBar () {
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/Cart" element={<Cart/>}/>
 </Routes> 
-  </>
+  </div>
 
   
     );
@@ -167,3 +122,9 @@ function NavBar () {
 }
 
 export default NavBar;
+
+
+// {(function(){
+//   if(decodedData!=undefined){
+//     navbar
+//     if(decodedData.id==id){

@@ -10,10 +10,12 @@ export default function Main() {
         <Card className="bg-dark text-black">
   <Card.Img src={image} alt="Card image" />
   <Card.ImgOverlay className='ct'>
-    <Card.Title className='ct1'>Card title</Card.Title>
+    <Card.Title className='ct1'>
+      {/* Card title */}
+      </Card.Title>
     <Card.Text>
-      This is a wider card with supporting text below as a natural lead-in to
-      additional content. This content is a little bit longer.
+      {/* This is a wider card with supporting text below as a natural lead-in to
+      additional content. This content is a little bit longer. */}
     </Card.Text>
   </Card.ImgOverlay>
 </Card>

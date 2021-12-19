@@ -3,6 +3,7 @@ import{Row , Col ,Card } from 'react-bootstrap'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams , useNavigate} from "react-router-dom";
+import jwt_decode from "jwt-decode"
 
 export default function Profile() {
 
@@ -14,13 +15,46 @@ export default function Profile() {
         const [enableEdit,setEnabeEdit] = useState(false)
   const [idUpdate,setIdUpdate] = useState()
 
+  let navegate =useNavigate()  
+  let decodedData ;
+  const storedToken = localStorage.getItem("token");
+  if (storedToken){
+    decodedData = jwt_decode(storedToken, { payload: true });
+     console.log(decodedData);
+     let expirationDate = decodedData.exp;
+      var current_time = Date.now() / 1000;
+      if(expirationDate < current_time)
+      {
+          localStorage.removeItem("token");
+      }
+   }
 
  useEffect (() =>{
-        axios.get('http://localhost:3001/seller/:id')
-        .then((res)=>{
-            console.log(res);
-            setUser(res.data);
-        })
+  {(function(){
+      if(decodedData!=undefined){
+        if(decodedData.type == "seller"){
+          axios.get(`http://localhost:3001/seller/${decodedData.id}`)
+          .then((res)=>{
+              console.log(res);
+              setUser(res.data);
+          })
+
+        }else if(decodedData.type == "byer") {
+          axios.get(`http://localhost:3001/buyer/${decodedData.id}`)
+          .then((res)=>{
+              console.log(res);
+              setUser(res.data);
+          })
+
+        }
+      }
+    }
+    )()}
+
+
+      
+
+
         },[]);
 
         // function editAuthor(e,_id){
@@ -51,19 +85,19 @@ export default function Profile() {
            <div className='pro1'>
                 <h1>My profile </h1>
                 <Row xs={1} md={2} className="g-4">
-  { user.map((item) => (
+  {/* { user.map((item) => ( */}
     <Col>
       <Card>
-        <Card.Img variant="top" src={item.imageUser} />
+        <Card.Img variant="top" src={user.imageUser} />
         <Card.Body>
-          <Card.Title>{item.name}</Card.Title>
+          <Card.Title>{user.name}</Card.Title>
           <Card.Text>
-          {item.details}
+          {user.details}
           </Card.Text>
         </Card.Body>
       </Card>
     </Col>
-  ))}
+  {/* // ))} */}
 </Row>
                 </div>
            <div className='pro2'>

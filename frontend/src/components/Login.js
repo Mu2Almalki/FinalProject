@@ -3,6 +3,7 @@ import axios from "axios";
 import '../App.css';
 import {useNavigate} from 'react-router-dom'
 import logoLogin from '../image/logo-login.jpg'
+import jwt from "jwt-decode"
 
 
 
@@ -23,15 +24,19 @@ import logoLogin from '../image/logo-login.jpg'
       })
       .then((res) => {
           console.log(res.data);
-          if(res.data.user){
-            const token = res.data.token;
+          if (res.data.user) {
+            console.log(res.data)
+            const token = res.data.user;
             console.log(token)
             localStorage.setItem("token", token);
-            navegate(`/Seller/${res.data.user}`);
-            navegate(`/Buyer/${res.data.user}`);
-
-            setUser(res.data);
+            const userSign = jwt(token);
+            console.log(userSign.userType)
+            if(userSign.type==="seller"){
+               navegate(`/Seller/${userSign.id}`);
+            }else{
+             navegate(`/Buyer/${userSign.id}`);
           }
+        }
       })
   }
 

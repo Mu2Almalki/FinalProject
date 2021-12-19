@@ -6,14 +6,25 @@ import { MDBModalHeader, MDBBtn, MDBModal, MDBModalDialog, MDBModalContent , MDB
   MDBModalTitle, MDBModalBody , MDBModalFooter } from 'mdb-react-ui-kit';
 import React from 'react'
 import {Form,Row,Col,Button }from 'react-bootstrap'
-
+import jwt_decode from "jwt-decode"
 
 export default function Seller() {
 
     const { id } = useParams();
 
     let navegate =useNavigate()  
-
+    let decodedData ;
+    const storedToken = localStorage.getItem("token");
+    if (storedToken){
+      decodedData = jwt_decode(storedToken, { payload: true });
+       console.log(decodedData);
+       let expirationDate = decodedData.exp;
+        var current_time = Date.now() / 1000;
+        if(expirationDate < current_time)
+        {
+            localStorage.removeItem("token");
+        }
+     }
   const [loading, setLoading] = useState(true);
     const [user , setUser]=useState();
     const [addName, setAddName] = useState ('')
@@ -53,35 +64,30 @@ export default function Seller() {
             })
         }
 
-      if (loading) {
-          console.log('hi'+id)
-        return (<p>loading...</p>);
-      }
-
-    return (
-        <div className="seller">
-<MDBRow>
-
-<MDBCol md='4' className='col-example1'>
-        
-        <div className="s1">
-              <img className="simg" src={user.imageUser}/>
-              <h1>{user.name}</h1>
-              <p>{user.details}</p>
-              </div>
-              <>
-        <MDBBtn rippleDuration={5000} rippleColor='danger' color='light'onClick={() => setScrollableModal(!scrollableModal)}>Add Product</MDBBtn>
+        // decoded
+        const decode =()=>{
+          if (decodedData != undefined){
+            console.log(decodedData.id)
+            console.log(id)
+            console.log(decodedData.id==id)
+            if(decodedData.id==id){
+              return(
+                <>
+                <p>hello</p>
 
 <MDBModal show={scrollableModal} setShow={setScrollableModal} tabIndex='-1'>
   <MDBModalDialog scrollable>
     <MDBModalContent>
       <MDBModalHeader>
-        <MDBModalTitle>Add Product</MDBModalTitle>
-        <MDBBtn
-          className='btn-close'
-          color='none'
-          onClick={() => setScrollableModal(!scrollableModal)}
-        ></MDBBtn>
+      <MDBBtn rippleDuration={5000} rippleColor='danger' color='light'onClick={() => setScrollableModal(!scrollableModal)}>Add Product</MDBBtn>
+      
+         <MDBModalTitle>Add Product</MDBModalTitle> 
+
+<MDBBtn
+className='btn-close'
+color='none'
+onClick={() => setScrollableModal(!scrollableModal)}
+></MDBBtn>
       </MDBModalHeader>
       <MDBModalBody>
                 {/* ______________________form________________________ */}
@@ -133,7 +139,30 @@ export default function Seller() {
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>
-    </>
+    </> )
+            }
+          }
+        }
+        // ___________________________________________
+
+      if (loading) {
+          console.log('hi'+id)
+        return (<p>loading...</p>);
+      }
+
+    return (
+        <div className="seller">
+<MDBRow>
+
+<MDBCol md='4' className='col-example1'>
+        
+        <div className="s1">
+              <img className="simg" src={user.imageUser}/>
+              <h1>{user.name}</h1>
+              <p>{user.details}</p>
+              {decode()}
+              </div>
+             
               
         </MDBCol>
   
