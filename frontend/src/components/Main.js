@@ -11,7 +11,14 @@ export default function Main() {
   <Card.Img src={image} alt="Card image" />
   <Card.ImgOverlay className='ct'>
     <Card.Title className='ct1'>
-      {/* Card title */}
+    <div className='cell' style={{height:"660px"}}>
+    <div className="hcell">
+    My Business
+    </div>
+    <div className="textcell">Add your store or order from our stores </div>
+    <div className="link-area"><a href="#" class="button-style1" title=" Start " target="_self"><span>Start</span></a>
+    </div>
+    </div>
       </Card.Title>
     <Card.Text>
       {/* This is a wider card with supporting text below as a natural lead-in to

@@ -206,7 +206,7 @@ margin-top:10px;
   background-size: cover;
   height: 80%;
   width: 100%;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 /* profile */
 .pro{
@@ -261,3 +261,141 @@ margin-top:10px;
   color: cornflowerblue;
   box-shadow: 0 0 8px 3px #B8B8B8;
 }
+/* maine page */
+
+.cell{
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  cursor: default;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: Khebrat;
+  text-align: right;
+  color: #fff;
+  box-sizing: border-box;
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  z-index: 2;
+  width: 10000px;
+  padding: 30px 0;
+  height: 660px;
+}
+.hcell{
+  -webkit-text-size-adjust: 100%;
+  cursor: default;
+  font-family: Khebrat;
+  /* text-align: right; */
+  color: #f7c353;
+  box-sizing: border-box;
+  line-height: 1em;
+  font-weight: 700;
+  letter-spacing: -.025em;
+  margin: 0;
+  margin-bottom: .5em;
+  font-size: 60px!important;
+  margin-left: 5%;
+}
+.textcell{
+  -webkit-text-size-adjust: 100%;
+  cursor: default;
+  font-family: Khebrat;
+  text-align: right;
+  box-sizing: border-box ;
+  font-size: 40px !important;
+  line-height: 1.5em;
+  font-weight: 300;
+  margin-top: -5px;
+  margin-bottom: 33px;
+  color: inherit;
+  color: #F5C7C7;
+
+}
+.button-style1{
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 700;
+  background: #f9b03e;
+  cursor: pointer;
+  border: none;
+  padding: 15px 35px;
+  line-height: 24px;
+  /* text-align: center; */
+  text-transform: uppercase;
+  border-radius: 30px;
+  transition: all .5s ease;
+  color: #fff;
+  font-family: open sans condensed;
+  letter-spacing: .1em;
+}
+/* about us page */
+.tabs-head{
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #383838;
+  cursor: default;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: Khebrat;
+  -webkit-box-direction: normal;
+  box-sizing: border-box;
+  text-align: left;
+  margin: 25px 0;
+}
+.wrap{
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  cursor: default;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: Khebrat;
+  -webkit-box-direction: normal;
+  text-align: right;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  background: 0 0;
+  color: #969696;
+  box-shadow: inset 0 -1px 0 #d1d8db;
+  border-radius: 0;
+  padding: 0;
+}
+.item.current{
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  -webkit-box-direction: normal;
+  /* text-align: right; */
+  /* box-sizing: border-box; */
+  /* display: inline-block; */
+  /* vertical-align: top; */
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 700;
+  /* cursor: pointer; */
+  transition: all .5s ease;
+  font-family: Khebrat;
+  background: 0 0!important;
+  padding: 10px 0;
+  border-radius: 0;
+  letter-spacing: .05em;
+  margin-left: 30px;
+  color: #f9b03e;
+  box-shadow: inset 0 -4px 0 #ed4266;
+}
+
+#aa{
+  margin-left: 30px;
+  color: #383838;
+  text-align: left;
+  font-size: 25px!important;
+  box-sizing: border-box;
+  font-family: Khebrat;
+  letter-spacing: -0.025em;
+  padding-top: 10px;
+}
+

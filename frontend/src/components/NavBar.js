@@ -11,6 +11,7 @@ import Cart from '../components/Cart';
 import Profile from "./Profile";
   import jwt_decode from "jwt-decode"
   // import { useParams } from "react-router-dom";
+  import logo  from '../image/logo.jpg'
 
 
 function NavBar () {
@@ -47,8 +48,9 @@ function NavBar () {
   <Container fluid>
     <Navbar.Brand  className="navbar-brand mt-2 mt-lg-0" href="#">
       <img
-          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.png"
-          height="15"
+          src={logo}
+          width="50px"
+          height="40px"
           alt="MDB Logo"
           loading="lazy"
           />
@@ -106,7 +108,10 @@ function NavBar () {
        
       <NavDropdown > 
       <NavDropdown.Item ><Link  className="nav-link" to="/Profile">My Profile</Link></NavDropdown.Item>
-      <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+      <NavDropdown.Item > <Link  className="nav-link" to="/Seller">My page</Link></NavDropdown.Item>
+      <NavDropdown.Item > <Link  className="nav-link" to="/Favorite">My Favorite </Link></NavDropdown.Item>
+
+
       <NavDropdown.Divider />
       <NavDropdown.Item href="#action5">
       <Link to="/Logout" className="link" onClick={(e)=>{logout(e)}} className="dropdown-item"> Logout</Link>
@@ -117,27 +122,7 @@ function NavBar () {
   </a></Link>
   </>)
      }
-  })()}
-      
-      {/* <Link to="/AppLogin"
-        className="dropdown-toggle d-flex align-items-center hidden-arrow"
-        href="#"
-        id="navbarDropdownMenuLink"
-        role="button"
-        dataMdbToggle="dropdown"
-        ariaExpanded="false"
-      >
-        <img
-          src="https://mdbcdn.b-cdn.net/img/new/avatars/2.jpg"
-          className="rounded-circle"
-          height="25"
-          alt="Black and White Portrait of a Man"
-          loading="lazy"
-        />
-      </Link> */}
-
-     
-     
+  })()}     
         
       </Nav>
     </Navbar.Collapse>
