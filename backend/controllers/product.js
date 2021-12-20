@@ -32,17 +32,25 @@ module.exports={
     },
     // update data (put)
     update: (req, res) => {
-        const updateProduct = Product.findByIdAndUpdate(req.params.id, {
+        const updateProduct = Product.findByIdAndUpdate(req.params.pid, {
           $set: req.body,
-        }).then((product)=>{
+        })
+        .then(async()=>{
+            const user = await User.findById(req.params.uid)
+        await user.populate( 'products' );
+        res.send(user);
+        })
+        .then((product)=>{
             res.status(200).send(product); 
         }) 
       },
     
-    delete:(req,res)=>{
-        Product.findByIdAndRemove( req.params.id)
-        .then(()=>{
-            res.send("product is deleted")
+    delete: (req,res)=>{
+        Product.findByIdAndRemove( req.params.pid)
+        .then(async()=>{
+            const user = await User.findById(req.params.uid)
+        await user.populate( 'products' );
+        res.send(user);
         })
         .catch(error=>{
             res.json({error:error})

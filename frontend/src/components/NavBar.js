@@ -66,9 +66,10 @@ function NavBar () {
 
       </Nav>
       <Nav className="d-flex align-items-center" id="navd">
-      {function(){
-    if(decodedData!=undefined){
-      <Link to="/AppLogin"
+      {(function(){
+        console.log(decodedData)
+    if(decodedData==undefined){
+     return( <Link to="/AppLogin"
       className="dropdown-toggle d-flex align-items-center hidden-arrow"
       href="#"
       id="navbarDropdownMenuLink"
@@ -77,19 +78,48 @@ function NavBar () {
       ariaExpanded="false"
     >
       <img
-        src="https://mdbcdn.b-cdn.net/img/new/avatars/2.jpg"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuMj5Jt7LQ0OQSdpmi02mQyidiU5qLDV0o6g&usqp=CAU"
         className="rounded-circle"
         height="25"
         alt="Black and White Portrait of a Man"
         loading="lazy"
       />
     </Link>
-      
+     )
     } 
-    // else if(decodedData.id==id){ }
-  }}
+     else{ 
+       return(
+       <>
+       {decodedData.image?<img
+        src={decodedData.image}
+        className="rounded-circle"
+        height="25"
+        alt="Black and White Portrait of a Man"
+        loading="lazy"
+      />: <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuMj5Jt7LQ0OQSdpmi02mQyidiU5qLDV0o6g&usqp=CAU"
+      className="rounded-circle"
+      height="25"
+      alt="Black and White Portrait of a Man"
+      loading="lazy"
+    />}
+       
+      <NavDropdown > 
+      <NavDropdown.Item ><Link  className="nav-link" to="/Profile">My Profile</Link></NavDropdown.Item>
+      <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item href="#action5">
+      <Link to="/Logout" className="link" onClick={(e)=>{logout(e)}} className="dropdown-item"> Logout</Link>
+      </NavDropdown.Item>
+    </NavDropdown>
+    <Link to="/Cart"> <a class="text-reset me-3" href="#"> 
+    <i className="fas fa-shopping-cart"></i>
+  </a></Link>
+  </>)
+     }
+  })()}
       
-      <Link to="/AppLogin"
+      {/* <Link to="/AppLogin"
         className="dropdown-toggle d-flex align-items-center hidden-arrow"
         href="#"
         id="navbarDropdownMenuLink"
@@ -104,19 +134,9 @@ function NavBar () {
           alt="Black and White Portrait of a Man"
           loading="lazy"
         />
-      </Link>
+      </Link> */}
 
-      <NavDropdown > 
-          <NavDropdown.Item ><Link  className="nav-link" to="/Profile">My Profile</Link></NavDropdown.Item>
-          <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action5">
-          <Link to="/Logout" className="link" onClick={(e)=>{logout(e)}} className="dropdown-item"> Logout</Link>
-          </NavDropdown.Item>
-        </NavDropdown>
-        <Link to="/Cart"> <a class="text-reset me-3" href="#"> 
-        <i className="fas fa-shopping-cart"></i>
-      </a></Link>
+     
      
         
       </Nav>

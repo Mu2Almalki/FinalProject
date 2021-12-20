@@ -5,10 +5,6 @@
   font-family: 'Fruktur', cursive;
   font-family: 'Merriweather', serif;
 }
-/* main page */
-/* .ct1{
-
-} */
 /* login */
 .base.container{
   width: 100%;
@@ -201,13 +197,16 @@ margin-top:10px;
   border-radius: 50%;
 }
 .main{
-  margin:1%;
+  margin:2%;
   padding-left:15%;
   padding-right: 15%;
-  background-image: url("https://c8.alamy.com/comp/RAR8NA/seamless-doodle-style-background-money-gold-business-and-finance-texture-RAR8NA.jpg");
+  background-image: url("https://cdn1.vectorstock.com/i/1000x1000/55/70/beer-icons-background-vector-9715570.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 80%;
+  width: 100%;
+  opacity: 0.8;
 }
 /* profile */
 .pro{

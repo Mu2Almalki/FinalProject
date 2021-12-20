@@ -10,11 +10,11 @@ router.get('/',ProductController.index)
 router.post('/post/:id',ProductController.create);
 
 // update
-router.put('/put/:id',ProductController.update)
+router.put('/put/:pid/:uid',ProductController.update)
 // router.put('/put/:id',ProductController.edit)
 
 // delete
-router.delete('/delete',ProductController.delete)
+router.delete('/delete/:pid/:uid',ProductController.delete)
 
 
 // يعرض منتجات كل يوزر لوحده

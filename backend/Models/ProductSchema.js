@@ -11,5 +11,5 @@ const Product =new Schema({
     user:{ type: Schema.Types.ObjectId, ref: 'User' }
 })
 
-
-module.exports= mongoose.model('product', Product)
+const product = mongoose.model('product', Product);
+module.exports = product 

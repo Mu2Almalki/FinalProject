@@ -10,10 +10,10 @@ export default function Profile() {
 
     const { id } = useParams();
         const [user, setUser]=useState([]);
-        const [addName, setAddName] = useState ('')
-        const [addImg, setAddImg] = useState (null)
-        const [addDetails , setAddDetails]= useState('')
-        const [enableEdit,setEnabeEdit] = useState(false)
+        const [addName, setAddName] = useState ()
+        const [addImg, setAddImg] = useState ()
+        const [addDetails , setAddDetails]= useState()
+        const [enableEdit,setEnabeEdit] = useState()
   const [idUpdate,setIdUpdate] = useState()
 
   let navegate =useNavigate()  
@@ -66,8 +66,11 @@ export default function Profile() {
             
 
         function handlUpdate(e){
+          console.log(addName)
+          console.log(addImg)
+          console.log(addDetails)
             e.preventDefault()
-                    axios.put(`http://localhost:3001/update/${id}` , {
+                    axios.put(`http://localhost:3001/update/${decodedData.id}` , {
                         name:addName,
                         imageUser:addImg,
                         details:addDetails

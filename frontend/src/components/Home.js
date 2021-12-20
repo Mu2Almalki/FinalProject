@@ -3,7 +3,7 @@ import axios from "axios";
 import '../App.css';
 import {  Link  } from "react-router-dom";
 import{Row , Col ,Card } from 'react-bootstrap'
-import { MDBCard, MDBCardTitle, MDBCardText, MDBCardOverlay, MDBCardImage , MDBRow ,MDBCol , MDBCardBody , MDBCardLink} from 'mdb-react-ui-kit';
+
 
  function Home() {
     const [user , setUser]=useState([]);
@@ -11,9 +11,6 @@ import { MDBCard, MDBCardTitle, MDBCardText, MDBCardOverlay, MDBCardImage , MDBR
     const [addImg, setAddImg] = useState (null)
     const [addDetails , setAddDetails]= useState('')
 
-
-   // const [enableEdit,setEnabeEdit] = useState(false)
-   //  const [idUpdate,setIdUpdate] = useState()
    
     useEffect (() =>{
         axios.get('http://localhost:3001/home')
@@ -23,20 +20,6 @@ import { MDBCard, MDBCardTitle, MDBCardText, MDBCardOverlay, MDBCardImage , MDBR
         })
         },[]);
 
-        // function handlPost(e){
-        //     e.preventDefault()
-        //     axios.post('http://localhost:3001/home' , {
-        //        imageUser:addImg ,
-        //         name: addName ,
-        //         details:addDetails
-
-        //     })
-        //     .then((res) => {
-        //         console.log(res.data);
-        //         setUser(res.data);
-        //     })
-        // }
-
         return (
          <div className="main">
 
@@ -44,7 +27,7 @@ import { MDBCard, MDBCardTitle, MDBCardText, MDBCardOverlay, MDBCardImage , MDBR
   {user.map((item) => (
     <Col>
       <Card>
-        <Card.Img variant="top" src={item.imageUser} />
+        <Card.Img variant="top" src={item.imageUser} height="400" width="400" style={{border:"solid"}}/>
         <Card.Body>
           <Card.Title>{item.name}</Card.Title>
           <Card.Text>
