@@ -25,9 +25,13 @@ This project is A site that allows you to experience a unique e-commerce as if y
 # Links:
 -Here is the link of Figma wireframe ->
 https://www.figma.com/file/PSDbegb6CfSU0T8Prp0r6I/Untitled?node-id=0%3A1
+
+-Here is the link of Trello
+https://trello.com/b/rrYatkFn/final-project
+
 -Also if you want to check my project I upload it and here is the link for you 🤍 ->
 https://github.com/Mu2Almalki/FinalProject
 
-https://trello.com/b/rrYatkFn/final-project
+
 
 

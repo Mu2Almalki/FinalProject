@@ -91,9 +91,9 @@ export default function Profile() {
                 {/* <Row xs={1} md={2} className="g-4"> */}
     <Col>
       <Card>
-        {/* <Card.Img className='imgcardpro' variant="top" src={user.imageUser} /> */}
+        <Card.Img className='imgcardpro' variant="top" src={user.imageUser} />
         
- <ImgProfile/>
+ {/* <ImgProfile/> */}
         <Card.Body>
           <Card.Title>{user.name}</Card.Title>
           <Card.Text>
@@ -111,24 +111,37 @@ export default function Profile() {
 
   {/* <div class="custom-file"> */}
       <br/>
-    <input onChange ={(e)=> setAddImg(e.target.value)} type="file" class="custom-file-input" id="customFile"/>
-    <label class="custom-file-label" for="customFile">Choose file</label>
+    {/* <input onChange ={(e)=> setAddImg(e.target.value)} type="file" class="custom-file-input" id="customFile"/> */}
+    {/* <label class="custom-file-label" for="customFile">Choose file</label> */}
     <input
         placeholder="Your Imge"
         onChange={(e) => setAddImg(e.target.value)}
         type="text"
         name="title"
+        style={{border:"solid"}}
       />
   {/* </div> */}
-  <br/>
+  <br/><br/>
   <label>
-    Name:
-    <input onChange ={(e)=> setAddName(e.target.value)} type="text" name="name" style={{border:"solid"}} />
+    <input placeholder="Name" onChange ={(e)=> setAddName(e.target.value)} type="text" name="name" style={{border:"solid"}} />
   </label>
 <br/>
-<textarea onChange ={(e)=> setAddDetails(e.target.value)} style={{"width":"300px"}}>
-  About me
-</textarea>
+
+{(function(){
+  if(decodedData!=undefined){
+          console.log(decodedData)
+          console.log(decodedData.id)
+  if(decodedData.type=="seller"){
+        return(
+          <>
+<input placeholder=" About me" onChange ={(e)=> setAddDetails(e.target.value)} style={{"width":"300px"}}/>
+ 
+      </>
+              )
+}
+}
+})()}
+
 <br/>
 <button onClick={(e)=>{handlUpdate(e)}}>Save</button>
 </Card.Text>
