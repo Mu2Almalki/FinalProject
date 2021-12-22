@@ -141,7 +141,7 @@ export default function Seller() {
   const [loading, setLoading] = useState(true);
     const [user , setUser]=useState();
     const [product , setProduct]=useState([])
-    const [qty,setQty]=useState()
+    const [qty,setQty]=useState(1)
 
 
     useEffect(() => {
@@ -188,13 +188,15 @@ function updateProduct (e,_id){
 function AddCart(_id){
   // console.log(qty)
   axios.post("http://localhost:3001/cart/cart/post",{
-    product:_id ,userId:decodedData.id,qty:2
+    product:_id ,userId:decodedData.id,qty:qty
   }).then((res)=>{
       console.log(res)
   })
 
 }
 
+// add comment
+// function AddComment
     
 
         // decoded
@@ -238,6 +240,12 @@ function AddCart(_id){
               <p>{user.details}</p>
               {decode()}
               </div>
+        <div className="cooment">
+          <p></p>
+          <input type="textarea" ></input>
+          <button>Send</button>
+
+        </div>
              
               
         </MDBCol>
@@ -259,7 +267,7 @@ function AddCart(_id){
                <Card.Text>
                     {item.description}
                     <h5>{item.price}SR</h5>
-                    <input  onChange = {(e)=> setQty(e.target.value)} type="number" name="qty" id="qty" value={qty}/>
+                    <span onClick = {()=> setQty(qty-1)} class="fa fa-minus-square text-secondary"></span><span class="px-md-3 px-1">{qty}</span><span onClick = {()=> setQty(qty+1)} class="fa fa-plus-square text-secondary"></span>
                </Card.Text>
                
                {/* <Button variant="primary">Go somewhere</Button> */}
