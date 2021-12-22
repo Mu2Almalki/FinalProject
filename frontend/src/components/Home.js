@@ -3,6 +3,7 @@ import axios from "axios";
 import '../App.css';
 import {  Link  } from "react-router-dom";
 import{Row , Col ,Card } from 'react-bootstrap'
+import { FaDollyFlatbed } from "react-icons/fa";
 
 
  function Home() {
@@ -35,7 +36,7 @@ import{Row , Col ,Card } from 'react-bootstrap'
           </Card.Text>
         </Card.Body>
         
-    <Card.Link href="#"><Link to={`/Seller/${item._id}`}>more</Link></Card.Link>
+    <Card.Link href="#"><Link to={`/Seller/${item._id}`}><FaDollyFlatbed /></Link></Card.Link>
 
       </Card>
     </Col>
