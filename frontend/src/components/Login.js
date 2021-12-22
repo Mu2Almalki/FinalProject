@@ -63,9 +63,9 @@ import jwt from "jwt-decode"
               ></input>
             </div>
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password" >Password</label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 placeholder="password"
                 onChange={(e) => setAddPassword(e.target.value)}

@@ -113,6 +113,12 @@ export default function Profile() {
       <br/>
     <input onChange ={(e)=> setAddImg(e.target.value)} type="file" class="custom-file-input" id="customFile"/>
     <label class="custom-file-label" for="customFile">Choose file</label>
+    <input
+        placeholder="Your Imge"
+        onChange={(e) => setAddImg(e.target.value)}
+        type="text"
+        name="title"
+      />
   {/* </div> */}
   <br/>
   <label>

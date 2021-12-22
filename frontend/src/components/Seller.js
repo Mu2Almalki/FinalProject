@@ -121,6 +121,7 @@ export default function Seller() {
     const [addNameP,setAddNameP]=useState('')
     const [addDis,setAddDis]=useState('')
     const [addPrice , setAddPrice]=useState('')
+    
 
     const { id } = useParams();
 
@@ -140,6 +141,7 @@ export default function Seller() {
   const [loading, setLoading] = useState(true);
     const [user , setUser]=useState();
     const [product , setProduct]=useState([])
+    const [qty,setQty]=useState()
 
 
     useEffect(() => {
@@ -183,9 +185,15 @@ function updateProduct (e,_id){
 
 // add to cart
 
-// function addToCart (){
-//   axios.post{"http://localhost:3001/cart/cart/post"}
-// }
+function AddCart(_id){
+  // console.log(qty)
+  axios.post("http://localhost:3001/cart/cart/post",{
+    product:_id ,userId:decodedData.id,qty:2
+  }).then((res)=>{
+      console.log(res)
+  })
+
+}
 
     
 
@@ -212,10 +220,11 @@ function updateProduct (e,_id){
         }
         // ___________________________________________
 
-      if (loading) {
-          console.log('hi'+id)
-        return (<p>loading...</p>);
-      }
+        if (loading) { 
+          return (<div class="spinner-border text-danger" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>);
+        }
 
     return (
         <div className="seller">
@@ -250,8 +259,10 @@ function updateProduct (e,_id){
                <Card.Text>
                     {item.description}
                     <h5>{item.price}SR</h5>
+                    <input  onChange = {(e)=> setQty(e.target.value)} type="number" name="qty" id="qty" value={qty}/>
                </Card.Text>
-               <Button variant="primary">Go somewhere</Button>
+               
+               {/* <Button variant="primary">Go somewhere</Button> */}
                {(function(){
                   if(decodedData!=undefined){
                           console.log(decodedData)
@@ -275,7 +286,7 @@ function updateProduct (e,_id){
     if(decodedData.type=="byer"){
       return(
         <>
-        <Button variant="prima">add to cart</Button>
+        <Button variant="prima" onClick= {()=> AddCart(item._id)}>add to cart</Button>
           {/* <button>Fav</button> */}
         
         </>

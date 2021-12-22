@@ -3,6 +3,7 @@ import '../App.css';
 import { MDBCard, MDBCardTitle, MDBCardText, MDBCardOverlay, MDBCardImage } from 'mdb-react-ui-kit';
 import {Card} from 'react-bootstrap'
 import image from '../image/p.jpg'
+import {Link} from 'react-dom'
 
 export default function Main() {
     return (
@@ -16,7 +17,7 @@ export default function Main() {
     My Business
     </div>
     <div className="textcell">Add your store or order from our stores </div>
-    <div className="link-area"><a href="#" class="button-style1" title=" Start " target="_self"><span>Start</span></a>
+    <div className="link-area"><a href="/Home" class="button-style1" title=" Start " target="_self"> <span>Start</span></a>
     </div>
     </div>
       </Card.Title>
@@ -26,7 +27,6 @@ export default function Main() {
     </Card.Text>
   </Card.ImgOverlay>
 </Card>
-            
        
     </div>
     

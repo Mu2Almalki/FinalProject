@@ -14,14 +14,12 @@ This project is A site that allows you to experience a unique e-commerce as if y
 - Express.
 - Node.
 - Axios.
-- JSON.
 - Redux.
 - useState.
 - useEffect.
 - useParams.
 - useNavigate.
 - Bootstrap in react.
-- MDB 
 - Responsive design.
 
 # Links:

@@ -43,7 +43,13 @@ User.post('save', function(doc,next){
     User.statics.login = async function(email, password){
         const user = await this.findOne({email})
         if (user){
+            const salt = await bcrypt.genSalt();
+         await bcrypt.hash(password , salt).then((re)=>{
+            console.log(re)
+        }) 
           const auth= await bcrypt.compare(password, user.password)
+        //   console.log(newpass)
+          console.log(user.password)
           if(auth){
               return user;
           }

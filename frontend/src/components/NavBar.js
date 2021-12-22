@@ -108,8 +108,27 @@ function NavBar () {
        
       <NavDropdown > 
       <NavDropdown.Item ><Link  className="nav-link" to="/Profile">My Profile</Link></NavDropdown.Item>
-      <NavDropdown.Item > <Link  className="nav-link" to="/Seller">My page</Link></NavDropdown.Item>
-      <NavDropdown.Item > <Link  className="nav-link" to="/Favorite">My Favorite </Link></NavDropdown.Item>
+
+      {(function(){
+  if(decodedData!=undefined){
+          console.log(decodedData)
+          console.log(decodedData.id)
+  if(decodedData.type=="seller"){
+        return(
+          <>
+ <NavDropdown.Item > <Link  className="nav-link" to="/Seller">My page</Link></NavDropdown.Item>
+          </>
+              )
+}else {
+  return(
+    <>
+     <NavDropdown.Item > <Link  className="nav-link" to="/Favorite">My Favorite </Link></NavDropdown.Item>
+    </>
+  )
+}
+}
+})()}
+     
 
 
       <NavDropdown.Divider />
@@ -117,9 +136,24 @@ function NavBar () {
       <Link to="/Logout" className="link" onClick={(e)=>{logout(e)}} className="dropdown-item"> Logout</Link>
       </NavDropdown.Item>
     </NavDropdown>
-    <Link to="/Cart"> <a class="text-reset me-3" href="#"> 
+
+    {(function(){
+  if(decodedData!=undefined){
+          console.log(decodedData)
+          console.log(decodedData.id)
+  if(decodedData.type==="byer"){
+        return(
+          <>
+          <Link to="/Cart"> <a class="text-reset me-3" href="#"> 
     <i className="fas fa-shopping-cart"></i>
   </a></Link>
+
+          </>
+              )
+}
+}
+})()}
+    
   </>)
      }
   })()}     
@@ -151,3 +185,5 @@ function NavBar () {
 }
 
 export default NavBar;
+
+

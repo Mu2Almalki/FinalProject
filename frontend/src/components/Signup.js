@@ -14,7 +14,7 @@ import React from 'react'
 
  function Signup(props) {
 
-    const [user , setUser]=useState("");
+    const [user , setUser]=useState("byer");
     const [addName, setAddName] =useState ('')
     const [addEmail,setAddEmail]=useState('')
     const [addPassword,setAddPassword]=useState('')
@@ -86,8 +86,8 @@ import React from 'react'
                 onChange ={(e)=> setAddEmail(e.target.value)}></input>
               </div>
               <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input type="text" name="password" placeholder="password"
+                <label htmlFor="password" >Password</label>
+                <input type="password" name="password" placeholder="password"
                  onChange ={(e)=> setAddPassword(e.target.value)}></input>
               </div>
               <div>
