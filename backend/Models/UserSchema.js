@@ -32,23 +32,11 @@ User.post('save', function(doc,next){
     console.log('new user was created & saved', doc);
     next();
     })
-    
-    // fire a function before doc saved to db
-    // User.pre('save', async function (next){
-    //     // console.log('user about to be created $ saved',this );
-    //     // const salt = await bcrypt.genSalt();
-    //     this.password = await md5(this.password)
-    //     next();
-    // })
-    
+
     // static method to login user
     User.statics.login = async function(email, password){
         const user = await this.findOne({email})
         if (user){
-        //     const salt = await bcrypt.genSalt();
-        //  await bcrypt.hash(password , salt).then((re)=>{
-        //     console.log(re)
-        // }) 
         //   const auth= await bcrypt.compare(password, user.password)
           const newPass = md5(password)
           const userPass = user.password

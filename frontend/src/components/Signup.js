@@ -31,15 +31,6 @@ import React from 'react'
     
     let navegate = useNavigate()
     
-    // useEffect (() =>{
-    //     axios.get('http://localhost:3001')
-    //     .then((res)=>{
-    //         console.log(res);
-    //         setUser(res.data);
-            
-    //     })
-    //     },[]);
-    
         function handlPost(e){
             e.preventDefault()
             axios.post('http://localhost:3001/signup' , {
