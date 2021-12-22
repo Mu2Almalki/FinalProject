@@ -110,7 +110,8 @@ export default function Cart() {
                                         <div className="cart_item_text">{item.subtotal}</div>
                                     </div>
                                     <div class="cart_item_color cart_info_col">
-                                    <Button variant="outline-danger" onClick={(e)=>deleteProduct(e,item.products._id)}><BsTrash></BsTrash></Button>{' '}  
+                                        <BsTrash onClick={(e)=>deleteProduct(e,item.products._id)}></BsTrash>{' '} 
+                                         
                                     </div>
                                 </div>
                             </li>
