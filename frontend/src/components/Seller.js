@@ -7,6 +7,7 @@ import { MDBModalHeader, MDBBtn, MDBModal, MDBModalDialog, MDBModalContent , MDB
 import React from 'react'
 import {Form,Row,Col,Button , Modal , Card}from 'react-bootstrap'
 import jwt_decode from "jwt-decode"
+import { BsTrash } from "react-icons/bs";
 
 
 function MyVerticallyCenteredModal(props) {
@@ -121,6 +122,7 @@ export default function Seller() {
     const [addNameP,setAddNameP]=useState('')
     const [addDis,setAddDis]=useState('')
     const [addPrice , setAddPrice]=useState('')
+    const [comment , setComment]= useState("")
     
 
     const { id } = useParams();
@@ -196,15 +198,26 @@ function AddCart(_id){
 }
 
 // add comment
-// function AddComment
-    
+function AddComment(){
+  axios.post(`http://localhost:3001/comment/post/${id}/${decodedData.id}`,{
+    comment:comment
+  }).then((res)=>{
+    console.log(res)
+    setUser(res.data);
+  })
+}
+
+// delete comment
+function deleteComment(did){
+  axios.delete(`http://localhost:3001/comment/delete/${did}`).then((response) => {
+    console.log(" deleteComment: ", response.data)
+    setComment(response.data);
+  })
+}
 
         // decoded
         const decode =()=>{
-          if (decodedData != undefined){
-            console.log(decodedData.id)
-            console.log(id)
-            console.log(decodedData.id==id)
+          if (decodedData != undefined){ 
             if(decodedData.id==id){
               return(
                 <>
@@ -241,9 +254,21 @@ function AddCart(_id){
               {decode()}
               </div>
         <div className="cooment">
-          <p></p>
-          <input type="textarea" ></input>
-          <button>Send</button>
+          {console.log(user.comments)}
+        {user.comments.map((com)=>{
+            return  (
+              <div>
+            <p>{com.comment}</p>
+            <BsTrash
+              onClick={(e) =>
+             deleteComment(com._id)
+             }
+            ></BsTrash>{" "}
+            </div>
+            )
+          })}
+          <input type="textarea" onChange={(e)=> setComment(e.target.value)} ></input>
+          <button onClick= {()=> AddComment()}>Send</button>
 
         </div>
              
@@ -272,9 +297,7 @@ function AddCart(_id){
                
                {/* <Button variant="primary">Go somewhere</Button> */}
                {(function(){
-                  if(decodedData!=undefined){
-                          console.log(decodedData)
-                          console.log(decodedData.id)
+                  if(decodedData!=undefined){ 
                   if(decodedData.id==id){
                         return(
                           <>
@@ -288,9 +311,7 @@ function AddCart(_id){
 })()}
 
 {(function(){
-  if(decodedData!=undefined){
-    console.log(decodedData)
-    console.log(decodedData.id)
+  if(decodedData!=undefined){ 
     if(decodedData.type=="byer"){
       return(
         <>
@@ -309,9 +330,7 @@ function AddCart(_id){
 <br/>
           
             {(function(){
-  if(decodedData!=undefined){
-    console.log(decodedData)
-    console.log(decodedData.id)
+  if(decodedData!=undefined){ 
     if(decodedData.id==id){
       return(
         <>

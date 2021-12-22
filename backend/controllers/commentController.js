@@ -42,6 +42,7 @@ module.exports={
         Comment.findByIdAndRemove( req.params.id)
         .then(()=>{
             res.send("comment is deleted")
+            res.send(user);
         })
         .catch(error=>{
             res.json({error:error})

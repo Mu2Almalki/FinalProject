@@ -20,7 +20,7 @@ router.get('/home', async (req , res)=>{
 })
 // لايجاد بيانات كل بائع باستخدام id
 router.get('/seller/:id', async (req , res)=>{
-    const users = await User.findById(req.params.id) 
+    const users = await User.findById(req.params.id).populate('comments') 
     console.log("We are online")
     res.send(users)
 })

@@ -21,7 +21,7 @@ router.delete('/delete/:pid/:uid',ProductController.delete)
 router.get("/getProduct/:id",async (req,res)=>{
     try {
         const user = await User.findById(req.params.id)
-        await user.populate( 'products' );
+        await user.populate( 'comments products' );
         res.send(user);
     } catch (e) {
         res.status(500).send()

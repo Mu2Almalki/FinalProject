@@ -123,7 +123,6 @@ export default function Cart() {
                             </div>
                             <div className="cart_item_quantity cart_info_col">
                               <div className="cart_item_title">Quantity</div>
-                              {/* <span class="fa fa-minus-square text-secondary"></span><span class="px-md-3 px-1">2</span><span class="fa fa-plus-square text-secondary"></span> */}
                               <div className="cart_item_text">{item.qty}</div>
                             </div>
                             <div className="cart_item_price cart_info_col">
