@@ -51,6 +51,7 @@ function MyVerticallyCenteredModal(props) {
                 console.log(res.data);
                 setUser(res.data);
                 setProduct(res.data.products);
+                props.setUpdateUser(true)
             })
         }
   return (
@@ -123,6 +124,7 @@ export default function Seller() {
     const [addDis,setAddDis]=useState('')
     const [addPrice , setAddPrice]=useState('')
     const [comment , setComment]= useState("")
+    const [updateUser , setUpdateUser]= useState(false)
     
 
     const { id } = useParams();
@@ -152,8 +154,9 @@ export default function Seller() {
         setUser(res.data);
         setProduct(res.data.products);
         setLoading(false);
+        setUpdateUser(false)
       });
-    }, []);
+    }, [updateUser]);
 
     // delete product
 
@@ -203,7 +206,7 @@ function AddComment(){
     comment:comment
   }).then((res)=>{
     console.log(res)
-    setUser(res.data);
+    setUpdateUser(true)
   })
 }
 
@@ -212,6 +215,7 @@ function deleteComment(did){
   axios.delete(`http://localhost:3001/comment/delete/${did}`).then((response) => {
     console.log(" deleteComment: ", response.data)
     setComment(response.data);
+    setUpdateUser(true)
   })
 }
 
@@ -227,6 +231,7 @@ function deleteComment(did){
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+        setUpdateUser={setUpdateUser}
       />
 
     </> )
@@ -258,6 +263,7 @@ function deleteComment(did){
         {user.comments.map((com)=>{
             return  (
               <div>
+                {/* <h2>{user}}</h2> */}
             <p>{com.comment}</p>
             <BsTrash
               onClick={(e) =>

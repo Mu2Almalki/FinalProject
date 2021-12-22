@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User =require("../Models/UserSchema");
 const Product = require("../Models/ProductSchema");
+var md5 = require('md5');
 
 
 // handle errors
@@ -46,9 +47,10 @@ const createToken =(id,email,type,image)=> {
 
 module.exports.signup_post= async (req,res)=>{
     const {email , password , name , userType }=req.body;
+    const hashedUser = md5(req.body.password)
 
     try{
-      const user = await  User.create({email , password ,  name , userType});
+      const user = await  User.create({email , password:hashedUser ,  name , userType});
       const token =createToken(user._id,user.email,user.userType);
       res.cookie('jwt',token,{httpOnly:true, maxAge:maxAge*1000});
       res.status(201).json({user:token});

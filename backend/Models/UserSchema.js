@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const ProductSchema = require('./ProductSchema').schema
 const CommentSchema = require('./CommentSchema').schema
+var md5 = require('md5');
 
 
 const {isEmail}= require('validator')
@@ -33,24 +34,27 @@ User.post('save', function(doc,next){
     })
     
     // fire a function before doc saved to db
-    User.pre('save', async function (next){
-        // console.log('user about to be created $ saved',this );
-        const salt = await bcrypt.genSalt();
-        this.password = await bcrypt.hash(this.password , salt)
-        next();
-    })
+    // User.pre('save', async function (next){
+    //     // console.log('user about to be created $ saved',this );
+    //     // const salt = await bcrypt.genSalt();
+    //     this.password = await md5(this.password)
+    //     next();
+    // })
+    
     // static method to login user
     User.statics.login = async function(email, password){
         const user = await this.findOne({email})
         if (user){
-            const salt = await bcrypt.genSalt();
-         await bcrypt.hash(password , salt).then((re)=>{
-            console.log(re)
-        }) 
-          const auth= await bcrypt.compare(password, user.password)
+        //     const salt = await bcrypt.genSalt();
+        //  await bcrypt.hash(password , salt).then((re)=>{
+        //     console.log(re)
+        // }) 
+        //   const auth= await bcrypt.compare(password, user.password)
+          const newPass = md5(password)
+          const userPass = user.password
+          console.log(newPass, userPass)
         //   console.log(newpass)
-          console.log(user.password)
-          if(auth){
+          if(newPass === userPass){
               return user;
           }
           throw Error('incorrect password')
