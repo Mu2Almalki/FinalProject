@@ -32,9 +32,9 @@ import jwt from "jwt-decode"
             const userSign = jwt(token);
             console.log(userSign.userType)
             if(userSign.type==="seller"){
-               navegate(`/Seller/${userSign.id}`);
+              navegate('/Home');
             }else{
-             navegate(`/Buyer/${userSign.id}`);
+              navegate('/Home');
           }
         }
       })

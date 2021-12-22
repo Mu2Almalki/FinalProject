@@ -63,7 +63,7 @@ function NavBar () {
         navbarScroll
       >
         <Nav.Link ><Link  className="nav-link" exact to="/">  Home </Link></Nav.Link>
-        <Nav.Link ><Link className="nav-link"  to="/Home"> business </Link></Nav.Link>
+        <Nav.Link ><Link className="nav-link"  to="/Home"> Business </Link></Nav.Link>
         <Nav.Link ><Link className="nav-link" to="/AboutUs">About Us </Link></Nav.Link>
 
       </Nav>

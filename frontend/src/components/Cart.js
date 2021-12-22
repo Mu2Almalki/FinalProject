@@ -67,7 +67,7 @@ export default function Cart() {
         if (cart.length == 0) {
           return (
             <div classNameNameNameName="container-fluid mt-100">
-              {/* <div classNameNameNameName="row">
+              <div classNameNameNameName="row">
                 <div classNameNameNameName="col-md-12">
                   <div classNameNameNameName="card">
                     <div classNameNameNameName="card-header">
@@ -87,7 +87,7 @@ export default function Cart() {
                         </h3>
                         <h4>Add something to make me happy :)</h4>{" "}
                         <a
-                          href="#"
+                          href="/Home"
                           classNameNameNameName="btn btn-primary cart-btn-transform m-3"
                           data-abc="true"
                         >
@@ -97,7 +97,7 @@ export default function Cart() {
                     </div>
                   </div>
                 </div>
-              </div> */}
+              </div>
             </div>
           );
         } else {

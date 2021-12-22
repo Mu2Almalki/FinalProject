@@ -53,7 +53,8 @@ import React from 'react'
                     if(userSign.type==="seller"){
                        navegate(`/Seller/${userSign.id}`);
                     }else if (userSign.type==="byer"){
-                     navegate(`/Buyer/${userSign.id}`);
+                    //  navegate(`/Buyer/${userSign.id}`);
+                    navegate('/Home')
                   }
                 }
                 
