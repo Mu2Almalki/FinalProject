@@ -12,6 +12,8 @@ import Profile from "./Profile";
   import jwt_decode from "jwt-decode"
   // import { useParams } from "react-router-dom";
   import logo  from '../image/logo.jpg'
+  import { BsCurrencyDollar  } from "react-icons/bs";
+
 
 
 function NavBar () {
@@ -63,7 +65,7 @@ function NavBar () {
         navbarScroll
       >
         <Nav.Link ><Link  className="nav-link" exact to="/">  Home </Link></Nav.Link>
-        <Nav.Link ><Link className="nav-link"  to="/Home"> Business </Link></Nav.Link>
+        <Nav.Link ><Link className="nav-link"  to="/Home"> <BsCurrencyDollar/> </Link></Nav.Link>
         <Nav.Link ><Link className="nav-link" to="/AboutUs">About Us </Link></Nav.Link>
 
       </Nav>

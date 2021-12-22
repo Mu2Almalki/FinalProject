@@ -8,6 +8,7 @@ import React from 'react'
 import {Form,Row,Col,Button , Modal , Card}from 'react-bootstrap'
 import jwt_decode from "jwt-decode"
 import { BsTrash } from "react-icons/bs";
+import { FcRightDown2 } from "react-icons/fc";
 
 
 function MyVerticallyCenteredModal(props) {
@@ -257,13 +258,52 @@ function deleteComment(did){
               <h1>{user.name}</h1>
               <p>{user.details}</p>
               {decode()}
-              </div>
-        <div className="cooment">
+              <h3>Add your comments here <FcRightDown2/></h3>
+
+              <div className="cooment">
           {console.log(user.comments)}
         {user.comments.map((com)=>{
             return  (
               <div>
-                {/* <h2>{user}}</h2> */}
+{(function(){
+  if(decodedData!=undefined){
+          console.log(decodedData)
+          console.log(decodedData.id)
+  if(decodedData.type=="seller"){
+        return(
+          <>
+          <p>{com.comment}</p>
+          </>
+              )
+}else {
+  return(
+    <>
+    <p>{com.comment}</p>
+            <BsTrash
+              onClick={(e) =>
+             deleteComment(com._id)
+             }
+            ></BsTrash>{" "}
+    </>
+  )
+}
+}
+})()}
+
+            </div>
+            )
+          })}
+          <input type="textarea" onChange={(e)=> setComment(e.target.value)} style={{border:"solid"}} ></input>
+          <button onClick= {()=> AddComment()}>Send</button>
+
+        </div>
+        
+              </div>
+        {/* <div className="cooment">
+          {console.log(user.comments)}
+        {user.comments.map((com)=>{
+            return  (
+              <div>
             <p>{com.comment}</p>
             <BsTrash
               onClick={(e) =>
@@ -276,7 +316,7 @@ function deleteComment(did){
           <input type="textarea" onChange={(e)=> setComment(e.target.value)} ></input>
           <button onClick= {()=> AddComment()}>Send</button>
 
-        </div>
+        </div> */}
              
               
         </MDBCol>
