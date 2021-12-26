@@ -16,7 +16,7 @@ const User =new Schema({
     validate :[isEmail, "Please enter an email"]},
     password:String,
     imageUser:String,
-    favorite:{ type: Schema.Types.ObjectId, ref: 'product' },
+    favorite:[{ type: Schema.Types.ObjectId, ref: 'product' }],
     cart:{ type: Schema.Types.ObjectId, ref: 'cart' },
     userType:{type: String,
     enum:["byer","seller"]

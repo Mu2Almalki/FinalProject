@@ -13,6 +13,7 @@ import Profile from "./Profile";
   // import { useParams } from "react-router-dom";
   import logo  from '../image/logo.jpg'
   import { BsCurrencyDollar  } from "react-icons/bs";
+import Favorite from "./Favorite";
 
 
 
@@ -178,6 +179,7 @@ function NavBar () {
           <Route path="/Buyer/:id" element={<Buyer/>}/>
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/Cart" element={<Cart/>}/>
+          <Route path="/Favorite" element={<Favorite/>}/>
 </Routes> 
  </div>
 

@@ -53,12 +53,10 @@ export default function Cart() {
       });
   };
 
-  if (loading) {
-    return (
-      <div classNameNameNameNameName="spinner-border text-danger" role="status">
-        <span classNameNameNameNameName="sr-only">Loading...</span>
-      </div>
-    );
+  if (loading) { 
+    return (<div class="spinner-border text-danger" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>);
   }
 
   return (

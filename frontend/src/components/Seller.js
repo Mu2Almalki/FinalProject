@@ -72,7 +72,7 @@ function MyVerticallyCenteredModal(props) {
       <Form>
   <Row className="mb-3">
 <Form.Group className="position-relative mb-3">
-            <Form.Label>image</Form.Label>
+            {/* <Form.Label>image</Form.Label>
             <Form.Control
               type="file"
               required
@@ -81,7 +81,14 @@ function MyVerticallyCenteredModal(props) {
               height="200px"
               width="200px"
             />
-           
+            */}
+
+<input
+        placeholder="Your Imge"
+        onChange={(e) => setAddImg(e.target.value)}
+        type="text"
+        name="title"
+      />
           </Form.Group>
 
     <Form.Group as={Col} controlId="formGridPassword">
@@ -220,6 +227,16 @@ function deleteComment(did){
   })
 }
 
+// add favorite
+function AddFav(_id){
+  axios.post("http://localhost:3001/favorite/post",{
+    product:_id ,userId:decodedData.id,qty:qty
+  }).then((res)=>{
+      console.log(res)
+  })
+
+}
+
         // decoded
         const decode =()=>{
           if (decodedData != undefined){ 
@@ -293,13 +310,13 @@ function deleteComment(did){
             </div>
             )
           })}
-          <input type="textarea" onChange={(e)=> setComment(e.target.value)} style={{border:"solid"}} ></input>
-          <button onClick= {()=> AddComment()}>Send</button>
+          {/* <input type="textarea" onChange={(e)=> setComment(e.target.value)} style={{border:"solid"}} ></input>
+          <button onClick= {()=> AddComment()}>Send</button> */}
 
         </div>
         
               </div>
-        {/* <div className="cooment">
+        <div className="cooment">
           {console.log(user.comments)}
         {user.comments.map((com)=>{
             return  (
@@ -316,7 +333,7 @@ function deleteComment(did){
           <input type="textarea" onChange={(e)=> setComment(e.target.value)} ></input>
           <button onClick= {()=> AddComment()}>Send</button>
 
-        </div> */}
+        </div>
              
               
         </MDBCol>
@@ -361,6 +378,7 @@ function deleteComment(did){
     if(decodedData.type=="byer"){
       return(
         <>
+        <button onClick= {()=> AddFav(item._id)} >Fav</button>
         <Button variant="prima" onClick= {()=> AddCart(item._id)}>add to cart</Button>
           {/* <button>Fav</button> */}
         
