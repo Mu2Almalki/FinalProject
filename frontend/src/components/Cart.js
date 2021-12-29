@@ -29,8 +29,7 @@ export default function Cart() {
   const [qty, setQty] = useState();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/cart/cart/${decodedData.id}`)
+    axios.get(`http://localhost:3001/cart/cart/${decodedData.id}`)
       .then((res) => {
         console.log(res.data[0].cart);
         setTotal(res.data[0].total);

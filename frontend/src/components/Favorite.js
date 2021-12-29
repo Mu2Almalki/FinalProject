@@ -61,12 +61,12 @@ export default function Favorite() {
             {fav.map((item) => {
                 return(
                    <div> 
-                       <div className="bg-dark vh-100 d-flex justify-content-center align-items-center">
+                       <div className="bg-light vh-100 d-flex justify-content-center align-items-center">
     <div className="container d-flex justify-content-center">
-        <div className="card p-2">
+        <div className="cardo p-2">
             <div className="p-info px-3 py-3">
                 <div>
-                   <Link to=""> <h5 className="mb-0">{item.nameProduct}</h5> </Link>
+                    <h5 className="mb-0">{item.nameProduct}</h5>
                 </div>
                 <div className="p-price d-flex flex-row"> <span>SR</span>
                     <h1>{item.price}</h1>

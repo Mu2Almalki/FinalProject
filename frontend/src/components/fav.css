@@ -1,12 +1,13 @@
 /* favorite */
-.card {
+.cardo {
     width: 350px;
     border: none;
     height: 350px;
     border-radius: 3px;
     cursor: pointer;
     position: relative;
-    overflow: hidden
+    overflow: hidden;
+    background-color: seashell;
   }
   
   .p-info {
@@ -33,7 +34,7 @@
     left: -125px;
     opacity: 0
   }
-  .card:hover .p-about {
+  .cardo:hover .p-about {
     animation: content 300ms ease-in forwards
   }
   
@@ -58,10 +59,10 @@
     }
   }
   
-  .card:hover .p-image img {
+  .cardo:hover .p-image img {
     animation: onimage 300ms ease-in forwards
   }
-  .card:hover .p-price {
+  .cardo:hover .p-price {
     animation: onprice 500ms ease-in forwards
   }
   
@@ -105,7 +106,7 @@
   bottom: -150px
   }
   
-  .card:hover .buttons {
+  .cardo:hover .buttons {
   animation: buttons 500ms ease-in forwards
   }
   

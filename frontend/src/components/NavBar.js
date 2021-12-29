@@ -10,10 +10,10 @@ import Main from "./Main";
 import Cart from '../components/Cart';
 import Profile from "./Profile";
   import jwt_decode from "jwt-decode"
-  // import { useParams } from "react-router-dom";
   import logo  from '../image/logo.jpg'
   import { BsCurrencyDollar  } from "react-icons/bs";
 import Favorite from "./Favorite";
+import Comment from "./Comment";
 
 
 
@@ -68,7 +68,8 @@ function NavBar () {
         <Nav.Link ><Link  className="nav-link" exact to="/">  Home </Link></Nav.Link>
         <Nav.Link ><Link className="nav-link"  to="/Home"> <BsCurrencyDollar/> </Link></Nav.Link>
         <Nav.Link ><Link className="nav-link" to="/AboutUs">About Us </Link></Nav.Link>
-
+        <Nav.Link ><Link className="nav-link" to={`/Comment/${decodedData.id}`}>Pp</Link></Nav.Link>
+ 
       </Nav>
       <Nav className="d-flex align-items-center" id="navd">
       {(function(){
@@ -119,7 +120,7 @@ function NavBar () {
   if(decodedData.type=="seller"){
         return(
           <>
- <NavDropdown.Item > <Link  className="nav-link" to="/Seller">My page</Link></NavDropdown.Item>
+ <NavDropdown.Item > <Link  className="nav-link" to={`/Seller/${decodedData.id}`}>My page</Link></NavDropdown.Item>
           </>
               )
 }else {
@@ -180,6 +181,7 @@ function NavBar () {
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/Cart" element={<Cart/>}/>
           <Route path="/Favorite" element={<Favorite/>}/>
+          <Route path="/Comment/:id" element={<Comment/>}/>
 </Routes> 
  </div>
 

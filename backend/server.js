@@ -8,6 +8,7 @@ const routerProduct = require('./routes/productRoute')
 const routerComment = require('./routes/commentRoute')
 const routerCart = require('./routes/cartRoute')
 const routerFavorite = require('./routes/favoriteRoute')
+const routerStripe = require('./routes/stripe')
 const cors = require("cors")
 // const { router } = require('./routes/userRoute')
 app.use(cors());
@@ -30,7 +31,9 @@ app.use('/comment',routerComment)
 app.use('/cart' ,routerCart)
 // _________________________________________________favorite
 app.use('/favorite',routerFavorite)
-// _______________________________________________________
+// _______________________________________________________payment
+app.use('/payment',routerStripe)
+// ________________________________________________
 app.listen(3001, ()=>{
     console.log("express has started!")
 })
