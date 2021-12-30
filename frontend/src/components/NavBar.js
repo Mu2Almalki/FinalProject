@@ -68,7 +68,6 @@ function NavBar () {
         <Nav.Link ><Link  className="nav-link" exact to="/">  Home </Link></Nav.Link>
         <Nav.Link ><Link className="nav-link"  to="/Home"> <BsCurrencyDollar/> </Link></Nav.Link>
         <Nav.Link ><Link className="nav-link" to="/AboutUs">About Us </Link></Nav.Link>
-        <Nav.Link ><Link className="nav-link" to={`/Comment/${decodedData.id}`}>Pp</Link></Nav.Link>
  
       </Nav>
       <Nav className="d-flex align-items-center" id="navd">
@@ -181,7 +180,6 @@ function NavBar () {
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/Cart" element={<Cart/>}/>
           <Route path="/Favorite" element={<Favorite/>}/>
-          <Route path="/Comment/:id" element={<Comment/>}/>
 </Routes> 
  </div>
 

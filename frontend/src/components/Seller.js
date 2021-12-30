@@ -143,13 +143,12 @@ export default function Seller() {
             <MDBCardText>
             <p>{user.details}</p>
             </MDBCardText>
-            
             {decode()}           
-             
+
           </MDBCardBody>
         </MDBCol>
       </MDBRow>
-    {/* </MDBCard> */}
+    
             
   </div>
 
@@ -163,36 +162,6 @@ export default function Seller() {
                   <>
                     <Product item={item}/>
                   </>
-
-                  <br />
-
-                  {(function () {
-                    if (decodedData != undefined) {
-                      if (decodedData.id == id) {
-                        return (
-                          <>
-                            <form>
-                              <input
-                                type="text"
-                                onChange={(e) => setAddNameP(e.target.value)}
-                                placeholder="name"
-                              />
-                              <input
-                                onChange={(e) => setAddDis(e.target.value)}
-                                type="text"
-                                placeholder="dis"
-                              />
-                              <input
-                                onChange={(e) => setAddPrice(e.target.value)}
-                                type="text"
-                                placeholder="price"
-                              />
-                            </form>
-                          </>
-                        );
-                      }
-                    }
-                  })()}
 
                 </div>
               );

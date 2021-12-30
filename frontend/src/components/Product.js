@@ -5,7 +5,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { MDBCol } from "mdb-react-ui-kit";
 import jwt_decode from "jwt-decode";
-import { Row, Button } from "react-bootstrap";
+import { Form, Row, Col, Button, Modal, Card } from "react-bootstrap";
 
 export default function Product({ item }) {
   const [addImg, setAddImg] = useState(null);
@@ -112,6 +112,12 @@ export default function Product({ item }) {
     }
   }
 
+  // modale
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div>
       <>
@@ -176,7 +182,8 @@ export default function Product({ item }) {
                         <button
                           className="bbt"
                           variant="outline-secondary"
-                          onClick={(e) => updateProduct(e, item._id)}
+                          onClick={handleShow}
+                          
                         >
                           Update
                         </button>
@@ -196,6 +203,48 @@ export default function Product({ item }) {
           </div>
         </div>
       </>
+      <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Update</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <br />
+
+{(function () {
+  if (decodedData != undefined) {
+    if (decodedData.id == id) {
+      return (
+        <>
+          <form>
+            <input
+              type="text"
+              onChange={(e) => setAddNameP(e.target.value)}
+              placeholder="name"
+            />
+            <input
+              onChange={(e) => setAddDis(e.target.value)}
+              type="text"
+              placeholder="dis"
+            />
+            <input
+              onChange={(e) => setAddPrice(e.target.value)}
+              type="text"
+              placeholder="price"
+            />
+          </form>
+        </>
+      );
+    }
+  }
+})()}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={(e) =>{ updateProduct(e, item._id);handleClose()}}>
+         
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 .wrapper {
-    background-color: #222;
-    max-width: 800px;
+    background-color: rgb(197, 195, 195);
+    max-width: 100%;
     margin: 10px auto;
     padding: 20px 20px
 }
@@ -31,30 +31,11 @@
 }
 
 .employee {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     padding-left: 30px
 }
-
-.h3 {
-    margin: 0
-}
-
-.carousel-indicators {
-    bottom: -100px
-}
-
-.carousel-indicators li {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%
-}
-
-.text-jusitfy {
-    font-weight: 700
-}
-
-.text-mute {
-    color: #aaa
+.h3{
+    color: black;
 }
 
 @media(max-width:767px) {

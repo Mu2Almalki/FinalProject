@@ -77,6 +77,7 @@ export default function Comment() {
       <div>  
      
          <div className="cooment">
+           <h1>What our clients are saying about us?</h1>
              {loading ? 
              <> 
            
@@ -85,7 +86,6 @@ export default function Comment() {
             <Carousel>
             {user.comments.map((com) => {
               return (
-              
                 <Carousel.Item interval={5000}>
                   <div className="content">
                     <div className="employee">
@@ -97,11 +97,18 @@ export default function Comment() {
                         <div className="text-justify"> {com.comment}</div> <span className="fas fa-quote-right"></span>
                     </div>
                 </div>
-                <div>
-                  <BsTrash
-                    onClick={(e) => deleteComment(com._id)}
-                  ></BsTrash>{" "}
-                </div>
+                {(function () {
+                if (decodedData != undefined) {
+                  if (decodedData.id == id) {
+                    return (
+                       <div>
+                      <BsTrash
+                      style={{color:"red"}}
+                        onClick={(e) => deleteComment(com._id)}
+                      ></BsTrash>{" "}
+                    </div>)
+                    }}})}
+               
                   <Carousel.Caption>
                   
                   </Carousel.Caption>
@@ -112,11 +119,19 @@ export default function Comment() {
             })}
               </Carousel>
               </div>
-            <input
+              {(function () {
+  if (decodedData != undefined) {
+    if (decodedData.type=="byer") {
+      return (<>
+      <input
               type="textarea"
               onChange={(e) => setComment(e.target.value)}
             ></input>
             <button onClick={() => AddComment()}>Send</button>
+      
+      </>)
+      }}})}
+            
             </>
             : ""}
           </div>
@@ -126,38 +141,3 @@ export default function Comment() {
 </div>          
     )
 }
-
-
-{/* <div classNameNameName='gg'>
-    <div className="wrapper">
-    <div className="carousel slide" id="mySlider" data-ride="carousel" data-interval="4000" data-pause="hover">
-        <ol className="carousel-indicators">
-            <li data-target="#mySlider" data-slide-to="0" className="active"></li>
-            <li data-target="#mySlider" data-slide-to="1"></li>
-            <li data-target="#mySlider" data-slide-to="2"></li>
-        </ol>
-        <div className="carousel-inner text-white">
-            <div className="carousel-item">
-            
-                        <div className="content">
-                    <div className="employee">
-                    
-                        <div className="h3 text-uppercase">James Maddison</div>
-                        <div className="h6 text-mute">Customer</div>
-                    </div>
-                    <div className="testimonial bg-white text-dark"> <span className="fas fa-quote-left"></span>
-                        <div className="text-justify"> {com.comment}</div> <span className="fas fa-quote-right"></span>
-                    </div>
-                </div>
-                        
-                        
-                      
-                
-            </div>
-        </div>
-    </div>
-</div>
-</div>  */}
-{/* _______________________________________________  */}
-
-     
