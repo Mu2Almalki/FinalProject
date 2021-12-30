@@ -17,7 +17,7 @@ import jwt from "jwt-decode"
   
     function handlPost(e){
       e.preventDefault()
-      axios.post('http://localhost:3001/login' , {
+      axios.post('/login' , {
           email :addEmail,
           password:addPassword
 
