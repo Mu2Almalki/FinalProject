@@ -10,6 +10,8 @@ const routerCart = require('./routes/cartRoute')
 const routerFavorite = require('./routes/favoriteRoute')
 const routerStripe = require('./routes/stripe')
 const cors = require("cors")
+const PORT = process.env.PORT || 3001;
+const path = require("path");
 // const { router } = require('./routes/userRoute')
 app.use(cors());
 // _________________________________________________________
@@ -33,6 +35,14 @@ app.use('/favorite',routerFavorite)
 // _______________________________________________________payment
 app.use('/payment',routerStripe)
 // ________________________________________________
-app.listen(3001, ()=>{
-    console.log("express has started!")
-})
+// app.listen(3001, ()=>{
+//     console.log("express has started!")
+// })
+
+app.use("/", express.static(path.join(__dirname, "../frontend/build")));
+app.get("*", (req, res) => {
+  console.log(path.resolve(__dirname, "./frontend/build/index.html"));
+  res.sendFile(path.resolve(__dirname + "./frontend/build", "index.html"));
+});
+
+app.listen(PORT);
