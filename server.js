@@ -39,7 +39,7 @@ app.use('/payment',routerStripe)
 //     console.log("express has started!")
 // })
 
-app.use("/", express.static(path.join(__dirname, "../frontend/build")));
+app.use("/", express.static(path.join(__dirname, "/frontend/build")));
 app.get("*", (req, res) => {
   console.log(path.resolve(__dirname, "frontend/build/index.html"));
   res.sendFile(path.resolve(__dirname + "/frontend/build", "index.html"));
