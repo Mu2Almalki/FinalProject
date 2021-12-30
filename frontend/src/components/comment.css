@@ -6,7 +6,9 @@
 }
 
 .wrapper .content {
-    cursor: pointer
+    cursor: pointer;
+    padding: 10px;
+
 }
 
 .testimonial {

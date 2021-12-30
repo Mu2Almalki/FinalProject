@@ -12,7 +12,6 @@ const routerStripe = require('./routes/stripe')
 const cors = require("cors")
 // const { router } = require('./routes/userRoute')
 app.use(cors());
-
 // _________________________________________________________
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb+srv://Mushira:Ms0503391650@cluster0.nujs7.mongodb.net/Project?retryWrites=true&w=majority',{

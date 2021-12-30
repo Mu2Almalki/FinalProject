@@ -5,6 +5,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { BsTrash } from "react-icons/bs";
 import { Button } from "react-bootstrap";
+import StripeCheckout from "react-stripe-checkout";
+
+import Swal from "sweetalert2";
 
 export default function Cart() {
   let decodedData;
@@ -19,7 +22,7 @@ export default function Cart() {
     }
   }
 
-  // let navegate =useNavigate()
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState([]);
@@ -51,6 +54,37 @@ export default function Cart() {
         setTotal(response.data.total);
       });
   };
+
+  // checkout
+  async function checkout (token, addresses) {
+    // axios
+    //   .post("http://localhost:3001/orders/create", { userId: decodedData.id })
+
+    //   .then(async (res) => {
+        try {
+          // const res =
+          await axios.post("http://localhost:3001/payment/post", {
+            tokenId: token.id,
+            amount: total * 3.75 * 100,
+          });
+        } catch (error) {}
+console.log(token.id)
+        // console.log(res);
+        Swal.fire({
+          title: "Congaraduations",
+          text: "Your byment succsess",
+          icon: "success",
+          didClose: () => {
+            navigate("/");
+          },
+        });
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
+  }
+
+
 
   if (loading) { 
     return (<div class="spinner-border text-danger" role="status">
@@ -154,6 +188,18 @@ export default function Cart() {
                   <div classNameName="order_total_amount">{total}</div>
                 </div>
               </div>
+              <div>
+                  <StripeCheckout
+                    stripeKey="pk_test_51KBwACGy54utR4N2eXQClkvFUiUkxc8Mj2BOovr07m7DwbV1DuTxHhil4rSyUL5QEA3T38BkDdGRdytTkzHr3KWN006DFv2XjU"
+                    token={checkout}
+                    billingAddress
+                    shippingAddress
+                    amount={Math.floor((total * 1.15) / 3.75) * 100}
+                    // name={cartItems}
+                  >
+                    <Button>Checkout</Button>
+                  </StripeCheckout>
+                </div>
             </>
           );
         }

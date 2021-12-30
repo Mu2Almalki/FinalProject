@@ -79,9 +79,8 @@ export default function Product({ item }) {
   // add to cart
 
   function AddCart(_id) {
-    // console.log(qty)
-    axios
-      .post("http://localhost:3001/cart/cart/post", {
+    console.log('qty')
+    axios.post("http://localhost:3001/cart/cart/post", {
         product: _id,
         userId: decodedData.id,
         qty: qty,
@@ -158,7 +157,7 @@ export default function Product({ item }) {
                       if (decodedData.type == "byer") {
                         return (
                             <div className="last_section">
-                            <button onClick={AddCart}>Add to cart</button>
+                            <button onClick={()=>AddCart(item._id)}>Add to cart</button>
                             <div className="heart">
                               <i
                                 onClick={() => {
