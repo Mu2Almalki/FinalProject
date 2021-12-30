@@ -24,11 +24,11 @@
     "jsonwebtoken": "^8.5.1",
     "md5": "^2.3.0",
     "mongoose": "^6.1.0",
+    "sqlite3": "^5.0.2",
     "stripe": "^8.195.0",
     "validator": "^13.7.0"
   },
   "devDependencies": {
-  "node":"^14.18.1"
-},
-"description": ""
+    "node": "^14.18.1"
+  }
 }
