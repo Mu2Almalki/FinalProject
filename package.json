@@ -8,7 +8,12 @@
     "build": "cd frontend && npm run build",
     "install-client": "cd frontend && npm install",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run install-client && npm run build",
-    "start": "node server.js"
+    "start": "node server.js",
+    "client": "cd frontend && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mu2Almalki/FinalProject"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +28,7 @@
     "validator": "^13.7.0"
   },
   "devDependencies": {
-  
-}
+  "node":"^14.18.1"
+},
+"description": ""
 }
