@@ -42,7 +42,7 @@ import jwt from "jwt-decode"
 
     return (
       <div className="base.container" ref={props.containerRef}>
-        <div className="header">Login</div>
+        <div className="header">Loginnn</div>
         <div className="content">
           <div className="image">
             <img
