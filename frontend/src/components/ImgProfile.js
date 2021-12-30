@@ -27,14 +27,14 @@ export default function ImgProfile() {
         {(function(){
             if(decodedData!=undefined){
               if(decodedData.type == "seller"){
-                axios.get(`http://localhost:3001/seller/${decodedData.id}`)
+                axios.get(`/seller/${decodedData.id}`)
                 .then((res)=>{
                     console.log(res);
                     setUser(res.data);
                 })
       
               }else if(decodedData.type == "byer") {
-                axios.get(`http://localhost:3001/buyer/${decodedData.id}`)
+                axios.get(`/buyer/${decodedData.id}`)
                 .then((res)=>{
                     console.log(res);
                     setUser(res.data);

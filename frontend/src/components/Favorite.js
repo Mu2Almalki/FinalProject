@@ -26,7 +26,7 @@ export default function Favorite() {
 
     useEffect(() => {
         axios
-          .get(`http://localhost:3001/favorite/${decodedData.id}`)
+          .get(`/favorite/${decodedData.id}`)
           .then((res) => {
             console.log(res.data);
             console.log(decodedData.id);
@@ -39,7 +39,7 @@ export default function Favorite() {
     e.preventDefault();
     console.log(_id);
     axios
-      .delete(`http://localhost:3001/favorite/delete/${decodedData.id}/${_id}`)
+      .delete(`/favorite/delete/${decodedData.id}/${_id}`)
       .then((response) => {
         console.log(" deleted: ", response.data);
         setFav(response.data);
@@ -47,7 +47,7 @@ export default function Favorite() {
   };
 
   function AddCart(_id){
-    axios.post("http://localhost:3001/cart/cart/post",{
+    axios.post("/cart/cart/post",{
       product:_id ,userId:decodedData.id,qty:qty
     }).then((res)=>{
         console.log(res)

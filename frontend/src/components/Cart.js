@@ -32,7 +32,7 @@ export default function Cart() {
   const [qty, setQty] = useState();
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/cart/cart/${decodedData.id}`)
+    axios.get(`/cart/cart/${decodedData.id}`)
       .then((res) => {
         console.log(res.data[0].cart);
         setTotal(res.data[0].total);
@@ -47,7 +47,7 @@ export default function Cart() {
     e.preventDefault();
     console.log(_id);
     axios
-      .delete(`http://localhost:3001/cart/cart/delete/${decodedData.id}/${_id}`)
+      .delete(`/cart/cart/delete/${decodedData.id}/${_id}`)
       .then((response) => {
         console.log(" deleted: ", response.data);
         setCart(response.data.cart);
@@ -58,12 +58,12 @@ export default function Cart() {
   // checkout
   async function checkout (token, addresses) {
     // axios
-    //   .post("http://localhost:3001/orders/create", { userId: decodedData.id })
+    //   .post("/orders/create", { userId: decodedData.id })
 
     //   .then(async (res) => {
         try {
           // const res =
-          await axios.post("http://localhost:3001/payment/post", {
+          await axios.post("/payment/post", {
             tokenId: token.id,
             amount: total * 3.75 * 100,
           });

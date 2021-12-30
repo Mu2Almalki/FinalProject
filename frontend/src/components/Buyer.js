@@ -11,7 +11,7 @@ export default function Buyer() {
     const {id}= useParams()
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/buyer/${id}`).then((res) => {
+        axios.get(`/buyer/${id}`).then((res) => {
           console.log(res.data);
           setUser(res.data);
           setLoading(false);

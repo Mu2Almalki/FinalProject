@@ -14,7 +14,7 @@ import { FaDollyFlatbed } from "react-icons/fa";
 
    
     useEffect (() =>{
-        axios.get('http://localhost:3001/home')
+        axios.get('/home')
         .then((res)=>{
             console.log(res);
             setUser(res.data);

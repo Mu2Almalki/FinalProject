@@ -38,7 +38,7 @@ export default function Comment() {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/product/getProduct/${id}`).then((res) => {
+    axios.get(`/product/getProduct/${id}`).then((res) => {
       console.log(res.data);
       setUser(res.data);
       setProduct(res.data.products);
@@ -50,7 +50,7 @@ export default function Comment() {
      // add comment
   function AddComment() {
     axios
-      .post(`http://localhost:3001/comment/post/${id}/${decodedData.id}`, {
+      .post(`/comment/post/${id}/${decodedData.id}`, {
         comment: comment,
       })
       .then((res) => {
@@ -62,7 +62,7 @@ export default function Comment() {
    // delete comment
    function deleteComment(did) {
     axios
-      .delete(`http://localhost:3001/comment/delete/${did}`)
+      .delete(`/comment/delete/${did}`)
       .then((response) => {
         console.log(" deleteComment: ", response.data);
         setComment(response.data);

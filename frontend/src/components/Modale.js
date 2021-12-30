@@ -56,7 +56,7 @@ export default function Modale(props) {
   function handlPost(e) {
     e.preventDefault();
     axios
-      .post(`http://localhost:3001/product/post/${decodedData.id}`, {
+      .post(`/product/post/${decodedData.id}`, {
         image: Img,
         nameProduct: addNameP,
         description: addDis,

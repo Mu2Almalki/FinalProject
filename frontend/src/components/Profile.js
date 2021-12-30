@@ -34,14 +34,14 @@ export default function Profile() {
   {(function(){
       if(decodedData!=undefined){
         if(decodedData.type == "seller"){
-          axios.get(`http://localhost:3001/seller/${decodedData.id}`)
+          axios.get(`/seller/${decodedData.id}`)
           .then((res)=>{
               console.log(res);
               setUser(res.data);
           })
 
         }else if(decodedData.type == "byer") {
-          axios.get(`http://localhost:3001/buyer/${decodedData.id}`)
+          axios.get(`/buyer/${decodedData.id}`)
           .then((res)=>{
               console.log(res);
               setUser(res.data);
@@ -70,7 +70,7 @@ export default function Profile() {
           console.log(addImg)
           console.log(addDetails)
             e.preventDefault()
-                    axios.put(`http://localhost:3001/update/${decodedData.id}` , {
+                    axios.put(`/update/${decodedData.id}` , {
                         name:addName,
                         imageUser:addImg,
                         details:addDetails

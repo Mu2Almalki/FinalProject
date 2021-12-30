@@ -34,7 +34,7 @@ export default function Product({ item }) {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/product/getProduct/${id}`).then((res) => {
+    axios.get(`/product/getProduct/${id}`).then((res) => {
       console.log(res.data);
       setUser(res.data);
       setProduct(res.data.products);
@@ -49,7 +49,7 @@ export default function Product({ item }) {
     e.preventDefault();
     console.log(_id);
     axios
-      .delete(`http://localhost:3001/product/delete/${_id}/${decodedData.id}`)
+      .delete(`/product/delete/${_id}/${decodedData.id}`)
       .then((response) => {
         console.log(" deleted: ", response.data);
         setUser(response.data);
@@ -63,7 +63,7 @@ export default function Product({ item }) {
     e.preventDefault();
     console.log(_id);
     axios
-      .put(`http://localhost:3001/product/put/${_id}/${decodedData.id}`, {
+      .put(`/product/put/${_id}/${decodedData.id}`, {
         image: addImg,
         nameProduct: addNameP,
         description: addDis,
@@ -80,7 +80,7 @@ export default function Product({ item }) {
 
   function AddCart(_id) {
     console.log('qty')
-    axios.post("http://localhost:3001/cart/cart/post", {
+    axios.post("/cart/cart/post", {
         product: _id,
         userId: decodedData.id,
         qty: qty,
@@ -93,7 +93,7 @@ export default function Product({ item }) {
   // add favorite
   function AddFav(_id) {
     axios
-      .post("http://localhost:3001/favorite/post", {
+      .post("/favorite/post", {
         product: _id,
         userId: decodedData.id,
         qty: qty,
