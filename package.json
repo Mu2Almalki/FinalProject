@@ -30,8 +30,6 @@
     "validator": "^13.7.0"
   },
   "devDependencies": {
-    "node": "^14.18.1"},
-    
-    "description": ""
+    "node": "^14.18.1"}
   
 }
