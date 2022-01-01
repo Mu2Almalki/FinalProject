@@ -5,6 +5,7 @@
   font-family: 'Fruktur', cursive;
   font-family: 'Merriweather', serif;
 }
+
 /* login */
 .base.container{
   width: 100%;
@@ -312,7 +313,7 @@ margin-top:10px;
   margin-top: -5px;
   margin-bottom: 33px;
   color: inherit;
-  color: #F5C7C7;
+  color: #3F4144;
 
 }
 .button-style1{

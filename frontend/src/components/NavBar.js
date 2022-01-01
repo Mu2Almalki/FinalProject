@@ -14,6 +14,7 @@ import Profile from "./Profile";
   import { BsCurrencyDollar  } from "react-icons/bs";
 import Favorite from "./Favorite";
 import Comment from "./Comment";
+import { FaSignOutAlt , FaSignInAlt} from "react-icons/fa";
 
 
 
@@ -66,7 +67,7 @@ function NavBar () {
         navbarScroll
       >
         <Nav.Link ><Link  className="nav-link" exact to="/">  Home </Link></Nav.Link>
-        <Nav.Link ><Link className="nav-link"  to="/Home"> <BsCurrencyDollar/> </Link></Nav.Link>
+        <Nav.Link ><Link className="nav-link"  to="/Home"> Stores </Link></Nav.Link>
         <Nav.Link ><Link className="nav-link" to="/AboutUs">About Us </Link></Nav.Link>
  
       </Nav>
@@ -82,13 +83,7 @@ function NavBar () {
       dataMdbToggle="dropdown"
       ariaExpanded="false"
     >
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuMj5Jt7LQ0OQSdpmi02mQyidiU5qLDV0o6g&usqp=CAU"
-        className="rounded-circle"
-        height="25"
-        alt="Black and White Portrait of a Man"
-        loading="lazy"
-      />
+       Login <FaSignInAlt/>
     </Link>
      )
     } 
@@ -136,7 +131,7 @@ function NavBar () {
 
       <NavDropdown.Divider />
       <NavDropdown.Item href="#action5">
-      <Link to="/Logout" className="link" onClick={(e)=>{logout(e)}} className="dropdown-item"> Logout</Link>
+      <Link to="/Logout" className="link" onClick={(e)=>{logout(e)}} className="dropdown-item"> Logout <FaSignOutAlt/></Link>
       </NavDropdown.Item>
     </NavDropdown>
 

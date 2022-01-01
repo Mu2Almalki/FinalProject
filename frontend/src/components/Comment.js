@@ -119,9 +119,17 @@ export default function Comment() {
             })}
               </Carousel>
               </div>
-              {(function () {
+           
+            
+            </>
+            : ""}
+               
+          </div>
+          <div>
+
+          {(function () {
   if (decodedData != undefined) {
-    if (decodedData.type=="byer") {
+    if (decodedData.type == "byer") {
       return (<>
       <input
               type="textarea"
@@ -130,11 +138,9 @@ export default function Comment() {
             <button onClick={() => AddComment()}>Send</button>
       
       </>)
-      }}})}
-            
-            </>
-            : ""}
+      }}})()}
           </div>
+          
       
 
        
