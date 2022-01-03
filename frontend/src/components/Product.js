@@ -6,19 +6,21 @@ import { useParams, useNavigate } from "react-router-dom";
 import { MDBCol } from "mdb-react-ui-kit";
 import jwt_decode from "jwt-decode";
 import { Form, Row, Col, Button, Modal, Card } from "react-bootstrap";
-
-export default function Product({ item }) {
-  const [addImg, setAddImg] = useState(null);
-  const [addNameP, setAddNameP] = useState("");
+import { FcLikePlaceholder , FcLike } from "react-icons/fc";
+import ImgUploud from "./ImgUploud";
+export default function Product({ item ,setProduct }) {
+  const [addImg, setAddImg] = useState(item.image);
+  const [addNameP, setAddNameP] = useState(item.name);
   const [addDis, setAddDis] = useState("");
   const [addPrice, setAddPrice] = useState("");
   const [qty, setQty] = useState(1);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState();
-  const [product, setProduct] = useState([]);
+  
   const { id } = useParams();
   const [heart, setheart] = useState(true);
   const [updateUser, setUpdateUser] = useState(false);
+  const [Img, setImg] = useState();
 
   let navegate = useNavigate();
   let decodedData;
@@ -73,6 +75,7 @@ export default function Product({ item }) {
         console.log(res.data);
         setUser(res.data);
         setProduct(res.data.products);
+        setUpdateUser(true)
       });
   }
 
@@ -165,6 +168,7 @@ export default function Product({ item }) {
                                   Heart();
                                 }}
                                 className={`fa ${heart ? "fa-heart-o" : "fa-heart"}`}
+
                               ></i>
                             </div>
                           </div>
@@ -215,6 +219,7 @@ export default function Product({ item }) {
       return (
         <>
           <form>
+            <ImgUploud setImg={setImg}/>
             <input
               type="text"
               onChange={(e) => setAddNameP(e.target.value)}

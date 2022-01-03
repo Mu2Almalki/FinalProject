@@ -97,17 +97,17 @@ export default function Comment() {
                         <div className="text-justify"> {com.comment}</div> <span className="fas fa-quote-right"></span>
                     </div>
                 </div>
-                {(function () {
+                {/* {(function () {
                 if (decodedData != undefined) {
                   if (decodedData.id == id) {
                     return (
-                       <div>
+                       <div> */}
                       <BsTrash
                       style={{color:"red"}}
                         onClick={(e) => deleteComment(com._id)}
                       ></BsTrash>{" "}
-                    </div>)
-                    }}})}
+                    {/* </div>)
+                    }}})} */}
                
                   <Carousel.Caption>
                   

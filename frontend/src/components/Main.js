@@ -2,14 +2,14 @@ import React from 'react'
 import '../App.css';
 import { MDBCard, MDBCardTitle, MDBCardText, MDBCardOverlay, MDBCardImage } from 'mdb-react-ui-kit';
 import {Card} from 'react-bootstrap'
-import image from '../image/p.jpg'
+import image from '../image/p2.jpg'
 import {Link} from 'react-dom'
 
 export default function Main() {
     return (
         <div>
         <Card className="bg-dark text-black">
-  <Card.Img src={image} alt="Card image" />
+  <Card.Img src={"https://i.pinimg.com/564x/95/5f/92/955f929d6f0114874e067cc59fa52c53.jpg"} alt="Card image" />
   <Card.ImgOverlay className='ct'>
     <Card.Title className='ct1'>
     <div className='cell' style={{height:"660px"}}>
@@ -21,10 +21,6 @@ export default function Main() {
     </div>
     </div>
       </Card.Title>
-    <Card.Text>
-      {/* This is a wider card with supporting text below as a natural lead-in to
-      additional content. This content is a little bit longer. */}
-    </Card.Text>
   </Card.ImgOverlay>
 </Card>
        

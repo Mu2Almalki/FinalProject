@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams , useNavigate} from "react-router-dom";
 import jwt_decode from "jwt-decode"
-import ImgProfile from './ImgProfile';
+import ImgUploud from './ImgUploud';
 
 export default function Profile() {
 
@@ -15,6 +15,7 @@ export default function Profile() {
         const [addDetails , setAddDetails]= useState()
         const [enableEdit,setEnabeEdit] = useState()
   const [idUpdate,setIdUpdate] = useState()
+  const [Img, setImg] = useState();
 
   let navegate =useNavigate()  
   let decodedData ;
@@ -57,12 +58,6 @@ export default function Profile() {
 
 
         },[]);
-
-        // function editAuthor(e,_id){
-        //     setIdUpdate(_id)
-        //     setEnabeEdit(true)
-          
-        //   }
             
 
         function handlUpdate(e){
@@ -72,7 +67,7 @@ export default function Profile() {
             e.preventDefault()
                     axios.put(`/update/${decodedData.id}` , {
                         name:addName,
-                        imageUser:addImg,
+                        imageUser:Img,
                         details:addDetails
                         
                     })
@@ -91,9 +86,16 @@ export default function Profile() {
                 {/* <Row xs={1} md={2} className="g-4"> */}
     <Col>
       <Card>
-        <Card.Img className='imgcardpro' variant="top" src={user.imageUser} />
+      <div className='img-holder'>
+                <div className='imgipro'>
+                <img id='imgpp' className='imgpp' src={user.imageUser} alt="" />
+                {/* <i id='ipro' class="fa fa-edit" >
+                    
+                  </i> */}
+                </div>
+                </div>
         
- {/* <ImgProfile/> */}
+        <ImgUploud setImg={setImg}/>
         <Card.Body>
           <Card.Title>{user.name}</Card.Title>
           <Card.Text>
@@ -111,15 +113,6 @@ export default function Profile() {
 
   {/* <div class="custom-file"> */}
       <br/>
-    {/* <input onChange ={(e)=> setAddImg(e.target.value)} type="file" class="custom-file-input" id="customFile"/> */}
-    {/* <label class="custom-file-label" for="customFile">Choose file</label> */}
-    <input
-        placeholder="Your Imge"
-        onChange={(e) => setAddImg(e.target.value)}
-        type="text"
-        name="title"
-        style={{border:"solid"}}
-      />
   {/* </div> */}
   <br/><br/>
   <label>

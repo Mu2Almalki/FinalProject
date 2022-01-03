@@ -41,6 +41,7 @@ export default function Modale(props) {
     formData.append("file", imgSelected);
     formData.append("upload_preset", "d7grddkn");
 
+    console.log("image ", formData);
     await axios
       .post(
         "http://api.cloudinary.com/v1_1/tuwaiq-bootcamp/image/upload",
@@ -70,6 +71,9 @@ export default function Modale(props) {
       });
   }
 
+   useEffect(() => {
+    uploadImage()
+  }, [imgSelected])
 
   return (
     <div>
@@ -91,8 +95,7 @@ export default function Modale(props) {
                 <input
                   type="file"
                   onChange={(event) => {
-                    setImgSelected(event.target.files[0]);
-                    uploadImage()
+                     setImgSelected(event.target.files[0]);
 
                   }}
                   placeholder="image"

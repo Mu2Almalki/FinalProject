@@ -3,7 +3,7 @@ import axios from "axios";
 import '../App.css';
 import {  Link  } from "react-router-dom";
 import{Row , Col ,Card } from 'react-bootstrap'
-import { FaDollyFlatbed } from "react-icons/fa";
+import { FiShoppingBag } from "react-icons/fi";
 
 
  function Home() {
@@ -30,13 +30,13 @@ import { FaDollyFlatbed } from "react-icons/fa";
       <Card>
         <Card.Img variant="top" src={item.imageUser} height="400" width="400" style={{border:"solid"}}/>
         <Card.Body>
-          <Card.Title>{item.name}</Card.Title>
+          <Card.Title>{item.name} <Card.Link href="#"><Link to={`/Seller/${item._id}`}><FiShoppingBag /></Link></Card.Link></Card.Title>
           <Card.Text>
           {item.details}
           </Card.Text>
         </Card.Body>
         
-    <Card.Link href="#"><Link to={`/Seller/${item._id}`}><FaDollyFlatbed /></Link></Card.Link>
+    
 
       </Card>
     </Col>

@@ -4,7 +4,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode"
 import React from 'react'
 
-export default function ImgProfile() {
+export default function ImgUploud({setImg}) {
 
     let decodedData ;
   const storedToken = localStorage.getItem("token");
@@ -21,7 +21,7 @@ export default function ImgProfile() {
 
    const [user, setUser]=useState([]);
    const [profileImg , setProfileImg]=useState(decodedData.image)
-
+   const [imgSelected, setImgSelected] = useState("");
 
     useEffect (() =>{
         {(function(){
@@ -45,36 +45,37 @@ export default function ImgProfile() {
           }
           )()}
       
-      
-            
-      
-      
-              },[]);
+      if(imgSelected !== "")
+      {
+        imageHandler()
 
+      }
+              },[imgSelected]);
+
+              
    const imageHandler =(e)=>{
-                const reader = new FileReader();
-                reader.onload=()=>{
-                    if(reader.readyState === 2){
-                        setProfileImg({profileImg : reader.result} )
-                    }
-        
-                }
-                reader.readAsDataURL(e.target.files[0])
-        
-            }
+    const formData = new FormData();
+    formData.append("file", imgSelected);
+    formData.append("upload_preset", "d7grddkn");
 
-
+    console.log("image ", formData);
+    axios.post("http://api.cloudinary.com/v1_1/tuwaiq-bootcamp/image/upload",
+        formData
+      )
+      .then((res) => {
+        console.log(res.data.secure_url);
+        setImg(res.data.secure_url);
+      });
+  };
 
     return (
         <div>
-             <div className='img-holder'>
-                <div className='imgipro'>
-                <img id='imgpp' className='imgpp' src={profileImg} alt="" />
-                <i id='ipro' class="fa fa-edit" ></i>
-                </div>
-                <input type='file' name="image-upload" id="input" accept="image/*" onChange={imageHandler} ></input>
+                <input  type='file' name="image-upload" id="input" accept="image/*"    onChange={(event) => {
+                     setImgSelected(event.target.files[0]);
+
+                  }}
+                   ></input>
             </div>
-        </div>
     )
 }
 

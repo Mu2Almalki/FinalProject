@@ -160,7 +160,8 @@ export default function Seller() {
               return (
                 <div>
                   <>
-                    <Product item={item}/>
+                    <Product item={item} setProduct=
+                    {setProduct} />
                   </>
 
                 </div>
