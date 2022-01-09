@@ -141,7 +141,7 @@ export default function Seller() {
           <MDBCardBody>
             <MDBCardTitle><h1>{user.name}</h1></MDBCardTitle>
             <MDBCardText>
-            <p>{user.details}</p>
+            <h5>{user.details}</h5>
             </MDBCardText>
             {decode()}           
 

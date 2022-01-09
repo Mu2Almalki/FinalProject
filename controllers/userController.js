@@ -59,7 +59,7 @@ module.exports.signup_post= async (req,res)=>{
     }
     catch(err){
         const errors = handleErrors(err)
-        res.status(400).json({errors})
+        res.status(200).json({errors})
 
     }
 }
@@ -75,7 +75,7 @@ module.exports.login_post= async(req,res)=>{
     }
    catch(err){
        const errors = handleErrors(err)
-       res.status(400).json({errors})
+       res.status(200).json({errors})
 
     }
 }
@@ -83,18 +83,3 @@ module.exports.logout_get=(req,res)=>{
     res, cookie('jwt','', {maxAge:1});
     res.redirect('/')
 }
-// cart
-// module.exports.post=async(req,res)=>{
-//     const user= User.findById(req.body.userid)
-//     const product =Product.findById(req.body.productid)
-//     User.cart.push(product)
-//     try{
-//        await user.save()
-//         res.send(product)
-
-//     }catch(e){
-//     console.log(e)
-//     }
-
-
-// }

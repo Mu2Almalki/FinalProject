@@ -189,7 +189,7 @@ input :focus{
  flex-direction: column;
 }
 .s1{
-  background-color: rgb(233, 230, 230);
+  background-color: rgb(248, 242, 242);
   /* display: flex;
   padding-left: 5%;
   justify-content: space-between; */
@@ -216,20 +216,15 @@ margin-top:10px;
 }
 /* profile */
 .pro{
-  display:grid ;
-  grid-template-columns:auto auto auto auto;
+  display:flex ;
+  justify-content: center;
+  align-items: center;
 
 }
 .pro1{
-  grid-column: 1/2;
   margin-bottom: 50px;
 }
-.pro2{
-  border: grey solid;
-  grid-column: 2/4;
-  margin-top: 5%;
-  margin-bottom: 2%;
-}
+
 /* navbar */
 #navd{
   margin-right: 80px;
@@ -242,13 +237,14 @@ margin-top:10px;
   border-color: #FFFFFF;
   box-shadow: 0 0 8px 3px #B8B8B8;
   position: relative;
-
+margin-left: 35%;
 }
 
 .imgpp{
   height: 200px;
   width: 200px;
   border-radius: 50%;
+  
 }
 
 #ipro{
@@ -281,7 +277,7 @@ margin-top:10px;
   box-sizing: border-box;
   display: table-cell;
   vertical-align: middle;
-  position: relative;
+  /* position: relative; */
   z-index: 2;
   width: 3000px;
   padding: 30px 140px;
@@ -297,7 +293,7 @@ margin-top:10px;
   line-height: 1em;
   font-weight: 700;
   letter-spacing: -.025em;
-  margin: 80px;
+  margin: 7%;
   margin-bottom: .5em;
   font-size: 60px!important;
   margin-left: 600px;
@@ -513,7 +509,7 @@ margin-top:10px;
 /* new */
 .containerpp {
   min-height: 85vh;
-  background-color: #BEACAC;
+  /* background-color: #BEACAC; */
   display: flex;
   justify-content: center;
   align-items: center
@@ -522,9 +518,6 @@ margin-top:10px;
 .cardpp {
   height: 560px;
   width: 320px;
-  background-color: #fff;
-  border-radius: 50px;
-  padding: 20px
 }
 
 .imagepp {
@@ -533,13 +526,13 @@ margin-top:10px;
   align-items: center
 }
 .imagepp img {
-  margin-top: 10px;
-  width: 200px
+  /* margin-top: 10px; */
+  width: 300px
 }
 .pricepp {
   margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center
 }
 

@@ -24,11 +24,11 @@ import { FiShoppingBag } from "react-icons/fi";
         return (
          <div className="main">
 
- <Row xs={1} md={2} className="g-4">
+ <Row xs={1} md={3} className="g-4">
   {user.map((item) => (
     <Col>
       <Card>
-        <Card.Img variant="top" src={item.imageUser} height="400" width="400" style={{border:"solid"}}/>
+        <Card.Img variant="top" src={item.imageUser} height="400" width="400"/>
         <Card.Body>
           <Card.Title>{item.name} <Card.Link href="#"><Link to={`/Seller/${item._id}`}><FiShoppingBag /></Link></Card.Link></Card.Title>
           <Card.Text>
@@ -41,7 +41,7 @@ import { FiShoppingBag } from "react-icons/fi";
       </Card>
     </Col>
   ))}
-</Row> 
+</Row><br/> 
        
 
     </div> );

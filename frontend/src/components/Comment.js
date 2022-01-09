@@ -77,7 +77,8 @@ export default function Comment() {
       <div>  
      
          <div className="cooment">
-           <h1>What our clients are saying about us?</h1>
+           <br/>
+           <h2>What our clients are saying about us?</h2>
              {loading ? 
              <> 
            
@@ -136,6 +137,7 @@ export default function Comment() {
               onChange={(e) => setComment(e.target.value)}
             ></input>
             <button onClick={() => AddComment()}>Send</button>
+            <br/><br/>
       
       </>)
       }}})()}

@@ -14,7 +14,11 @@ import jwt from "jwt-decode"
     const [User , setUser]=useState([]);
     const [addEmail,setAddEmail]=useState('')
     const [addPassword,setAddPassword]=useState('')
-  
+    const [loginerr , setLoginerr]=useState({
+      email:"",
+     password:""
+    })
+    
     function handlPost(e){
       e.preventDefault()
       axios.post('/login' , {
@@ -24,6 +28,11 @@ import jwt from "jwt-decode"
       })
       .then((res) => {
           console.log(res.data);
+            if (res.data.errors){
+              setLoginerr(res.data.errors)
+              console.log(loginerr)
+
+            }
           if (res.data.user) {
             console.log(res.data)
             const token = res.data.user;
@@ -61,6 +70,9 @@ import jwt from "jwt-decode"
                 placeholder="email"
                 onChange={(e) => setAddEmail(e.target.value)}
               ></input>
+              {loginerr.email == "" ? "" : 
+                <p style={{color:"red"}}>{loginerr.email}</p>
+                }
             </div>
             <div className="form-group">
               <label htmlFor="password" >Password</label>
@@ -70,6 +82,11 @@ import jwt from "jwt-decode"
                 placeholder="password"
                 onChange={(e) => setAddPassword(e.target.value)}
               ></input>
+              {loginerr.email == "" ? "" : 
+                <p style={{color:"red"}}>{loginerr.password}</p>
+                }
+             
+              {loginerr.password == "" ? "" : <div><p>{loginerr.password}</p></div>}
             </div>
             <div className="botnn">
               {" "}

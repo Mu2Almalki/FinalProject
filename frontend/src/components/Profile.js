@@ -82,65 +82,60 @@ export default function Profile() {
     return (
         <div className='pro'> 
            <div className='pro1'>
-                <h1>My profile </h1>
-                {/* <Row xs={1} md={2} className="g-4"> */}
-    <Col>
+             <br/><br/>
+                <h4>My profile </h4>
+                <br/><br/>
       <Card>
       <div className='img-holder'>
                 <div className='imgipro'>
                 <img id='imgpp' className='imgpp' src={user.imageUser} alt="" />
+                
                 {/* <i id='ipro' class="fa fa-edit" >
                     
                   </i> */}
                 </div>
+                <br/><br/>
                 </div>
         
         <ImgUploud setImg={setImg}/>
         <Card.Body>
           <Card.Title>{user.name}</Card.Title>
           <Card.Text>
-          {user.details}
+          <h5>{user.details}</h5>
           </Card.Text>
-        </Card.Body>
-      </Card>
-    </Col>
-    
-{/* </Row> */}
-                </div>
-           <Card className='pro2'>
-           <Card.Body>
-           <Card.Text>
+          <Card.Text>
 
-  {/* <div class="custom-file"> */}
-      <br/>
-  {/* </div> */}
-  <br/><br/>
-  <label>
-    <input placeholder="Name" onChange ={(e)=> setAddName(e.target.value)} type="text" name="name" style={{border:"solid"}} />
-  </label>
+{/* <div class="custom-file"> */}
+    <br/>
+{/* </div> */}
+<br/><br/>
+<label>
+  <input placeholder="Name" onChange ={(e)=> setAddName(e.target.value)} type="text" name="name"  />
+</label>
 <br/>
 
 {(function(){
-  if(decodedData!=undefined){
-          console.log(decodedData)
-          console.log(decodedData.id)
-  if(decodedData.type=="seller"){
-        return(
-          <>
+if(decodedData!=undefined){
+        console.log(decodedData)
+        console.log(decodedData.id)
+if(decodedData.type=="seller"){
+      return(
+        <>
 <input placeholder=" About me" onChange ={(e)=> setAddDetails(e.target.value)} style={{"width":"300px"}}/>
- 
-      </>
-              )
+
+    </>
+            )
 }
 }
 })()}
 
-<br/>
+ <br/><br/>
 <button onClick={(e)=>{handlUpdate(e)}}>Save</button>
 </Card.Text>
-
-</Card.Body>
-           </Card>
-        </div>
+        </Card.Body>
+      </Card>
+                </div>
+  
+       </div>
     )
 }

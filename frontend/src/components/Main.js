@@ -4,12 +4,13 @@ import { MDBCard, MDBCardTitle, MDBCardText, MDBCardOverlay, MDBCardImage } from
 import {Card} from 'react-bootstrap'
 import image from '../image/p2.jpg'
 import {Link} from 'react-dom'
+import bg1 from '../image/bg1.jpg'
 
 export default function Main() {
     return (
         <div>
         <Card className="bg-dark text-black">
-  <Card.Img src={"https://i.pinimg.com/564x/95/5f/92/955f929d6f0114874e067cc59fa52c53.jpg"} alt="Card image" />
+  <Card.Img src={bg1} alt="Card image" />
   <Card.ImgOverlay className='ct'>
     <Card.Title className='ct1'>
     <div className='cell' style={{height:"660px"}}>

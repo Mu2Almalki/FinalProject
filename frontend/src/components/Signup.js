@@ -18,6 +18,10 @@ import React from 'react'
     const [addName, setAddName] =useState ('')
     const [addEmail,setAddEmail]=useState('')
     const [addPassword,setAddPassword]=useState('')
+    const [signerr, setSignerr] = useState({
+      email:"",
+     password:""
+    })
 
     const [checked, setChecked] = useState(false);
   const [radioValue, setRadioValue] = useState('1');
@@ -43,6 +47,11 @@ import React from 'react'
             .then((res) => {
                 console.log(res.data);
                 setUser(res.data.user);
+                if (res.data.errors){
+                  setSignerr(res.data.errors)
+      
+                }
+
                 if (res.data.user) {
                     console.log(res.data)
                     const token = res.data.user;
@@ -76,6 +85,12 @@ import React from 'react'
                 <label htmlFor="email">Email</label>
                 <input type="text" name="email" placeholder="email"
                 onChange ={(e)=> setAddEmail(e.target.value)}></input>
+                {signerr.email == "" ? "" :
+                <div className="alert">
+                <p>{signerr.email}</p>
+              </div>
+                }
+                
               </div>
               <div className="form-group">
                 <label htmlFor="password" >Password</label>
@@ -83,35 +98,7 @@ import React from 'react'
                  onChange ={(e)=> setAddPassword(e.target.value)}></input>
               </div>
               <div>
-              {/* <ButtonGroup className="mb-2">
-        <ToggleButton
-          id="toggle-check"
-          type="checkbox"
-          variant="secondary"
-          checked={checked}
-          value="1"
-          onChange={(e) => setChecked(e.currentTarget.checked)}
-        >
-          Checked
-        </ToggleButton>
-      </ButtonGroup>
-      <br />
-              <ButtonGroup className="mb-2">
-        {radios.map((radio, idx) => (
-          <ToggleButton
-            key={idx}
-            id={`radio-${idx}`}
-            type="radio"
-            variant="secondary"
-            name="radio"
-            value={radio.value}
-            checked={radioValue === radio.value}
-            onChange={(e) => setRadioValue(e.currentTarget.value)}
-          >
-            {radio.name}
-          </ToggleButton>
-          ))}
-          </ButtonGroup> */}
+              
       <MDBRadio onChange={()=>{setUser('seller')}} name='flexRadioDefault' id='flexRadioDefault1' label='Seller' />
       <MDBRadio onChange={()=>{setUser('byer')}} name='flexRadioDefault' id='flexRadioDefault2' label='Buyer' defaultChecked />
     </div>

@@ -130,10 +130,11 @@ export default function Product({ item ,setProduct }) {
               <img src={item.image} />
             </div>
             <div className="textpp">
-              <h3>{item.nameProduct}</h3>
+              <br/>
+              <h4>{item.nameProduct}</h4>
 
               <div className="pricepp">
-                <h3>{item.price} SR</h3>
+                <h5>{item.price} SR</h5>
                 {(function () {
                   if (decodedData != undefined) {
                     if (decodedData.type == "byer") {
@@ -248,7 +249,7 @@ export default function Product({ item ,setProduct }) {
             Save Changes
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal><br/><br/>
     </div>
   );
 }
