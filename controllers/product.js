@@ -19,6 +19,7 @@ module.exports={
                 image: req.body.image,
                 price:req.body.price,
                 quontity:req.body.quontity,
+                seller:req.body.sellerId
             }).then(async product=> {
                  User.findByIdAndUpdate(req.params.id ,{$push:{products:product}})
                 .then(async user=>{

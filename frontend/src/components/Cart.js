@@ -57,10 +57,9 @@ export default function Cart() {
 
   // checkout
   async function checkout (token, addresses) {
-    // axios
-    //   .post("/orders/create", { userId: decodedData.id })
-
-    //   .then(async (res) => {
+    axios
+      .post("/order/post", {cartProduct:cart , TotalOrder:total , BuyerId:userId })
+      .then(async (res) => {
         try {
           // const res =
           await axios.post("/payment/post", {
@@ -78,18 +77,20 @@ console.log(token.id)
             navigate("/");
           },
         });
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
 
 
   if (loading) { 
-    return (<div class="spinner-border text-danger" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>);
+    return (
+    <div class="spinner-border text-danger" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  );
   }
 
   return (
@@ -134,44 +135,44 @@ console.log(token.id)
         } else {
           return (
             <>
+            {console.log(cart)}
               <div class="cart_title">Shopping Cart</div>
-
-              {cart.map((item) => {
+              {cart.map((element) => {
                 return (
                   <div>
                     <div className="cart_items">
                       <ul className="cart_list">
                         <li className="cart_item clearfix">
                           <div className="cart_item_image">
-                            <img src={item.products.image} alt="" />
+                            <img src={element.products.image} alt="" />
                           </div>
                           <div className="cart_item_info d-flex flex-md-row flex-column justify-content-between">
                             <div className="cart_item_name cart_info_col">
                               <div className="cart_item_title">Name</div>
                               <div className="cart_item_text">
-                                {item.products.nameProduct}
+                                {element.products.nameProduct}
                               </div>
                             </div>
                             <div className="cart_item_quantity cart_info_col">
                               <div className="cart_item_title">Quantity</div>
-                              <div className="cart_item_text">{item.qty}</div>
+                              <div className="cart_item_text">{element.qty}</div>
                             </div>
                             <div className="cart_item_price cart_info_col">
                               <div className="cart_item_title">Price</div>
                               <div className="cart_item_text">
-                                {item.products.price}
+                                {element.products.price}
                               </div>
                             </div>
                             <div className="cart_item_total cart_info_col">
                               <div className="cart_item_title">Total</div>
                               <div className="cart_item_text">
-                                {item.subtotal}
+                                {element.subtotal}
                               </div>
                             </div>
                             <div class="cart_item_color cart_info_col">
                               <BsTrash
                                 onClick={(e) =>
-                                  deleteProduct(e, item.products._id)
+                                  deleteProduct(e, element.products._id)
                                 }
                               ></BsTrash>{" "}
                             </div>

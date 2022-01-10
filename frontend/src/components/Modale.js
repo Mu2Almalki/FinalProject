@@ -62,6 +62,7 @@ export default function Modale(props) {
         nameProduct: addNameP,
         description: addDis,
         price: addPrice,
+        sellerId:decodedData.id
       })
       .then((res) => {
         console.log(res.data);

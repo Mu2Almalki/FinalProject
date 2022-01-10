@@ -606,8 +606,8 @@ margin-left: 35%;
   transition: all 0.5s
 }
 .fa-heart-o{
-  border:solid red;
-  font-weight: 800
+  border:solid white;
+  /* font-weight: 800 */
 }
 .fa-heart {
   color: red;

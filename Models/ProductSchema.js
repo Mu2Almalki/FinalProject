@@ -8,7 +8,7 @@ const Product =new Schema({
     image:String,
     price:Number,
     quontity:Number,
-    user:{ type: Schema.Types.ObjectId, ref: 'User' }
+    seller:{ type: Schema.Types.ObjectId, ref: 'User' }
 })
 
 const product = mongoose.model('product', Product);

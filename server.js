@@ -12,6 +12,8 @@ const routerStripe = require('./routes/stripe')
 const cors = require("cors")
 const PORT = process.env.PORT || 3001;
 const path = require("path");
+const router = require('./routes/userRoute')
+const routerOrder = require('./routes/orderRoute')
 // const { router } = require('./routes/userRoute')
 app.use(cors());
 // _________________________________________________________
@@ -35,6 +37,7 @@ app.use('/favorite',routerFavorite)
 // _______________________________________________________payment
 app.use('/payment',routerStripe)
 // ________________________________________________
+app.use('/order',routerOrder)
 // app.listen(3001, ()=>{
 //     console.log("express has started!")
 // })
