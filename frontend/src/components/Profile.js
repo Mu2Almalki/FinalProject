@@ -14,6 +14,7 @@ export default function Profile() {
         const [addImg, setAddImg] = useState ()
         const [addDetails , setAddDetails]= useState()
         const [enableEdit,setEnabeEdit] = useState()
+        
   const [idUpdate,setIdUpdate] = useState()
   const [Img, setImg] = useState();
 
@@ -90,9 +91,9 @@ export default function Profile() {
                 <div className='imgipro'>
                 <img id='imgpp' className='imgpp' src={user.imageUser} alt="" />
                 
-                <i id='ipro' class="fa fa-edit" >
+                {/* <i id='ipro' class="fa fa-edit" >
                     
-                  </i>
+                  </i> */}
                 </div>
                 <br/><br/>
                 </div>

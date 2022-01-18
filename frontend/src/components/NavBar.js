@@ -9,6 +9,8 @@ import Buyer from '../components/Buyer'
 import Main from "./Main";
 import Cart from '../components/Cart';
 import Profile from "./Profile";
+import Order from "./Order";
+import OrderB from './OrderB'
   import jwt_decode from "jwt-decode"
   import logo  from '../image/logo.jpg'
   import { BsCurrencyDollar  } from "react-icons/bs";
@@ -26,7 +28,7 @@ function NavBar () {
   const storedToken = localStorage.getItem("token");
   if (storedToken){
     decodedData = jwt_decode(storedToken, { payload: true });
-     console.log(decodedData);
+    //  console.log(decodedData);
      let expirationDate = decodedData.exp;
       var current_time = Date.now() / 1000;
       if(expirationDate < current_time)
@@ -73,7 +75,7 @@ function NavBar () {
       </Nav>
       <Nav className="d-flex align-items-center" id="navd">
       {(function(){
-        console.log(decodedData)
+        // console.log(decodedData)
     if(decodedData==undefined){
      return( <Link to="/AppLogin"
       className="dropdown-toggle d-flex align-items-center hidden-arrow"
@@ -109,18 +111,20 @@ function NavBar () {
 
       {(function(){
   if(decodedData!=undefined){
-          console.log(decodedData)
-          console.log(decodedData.id)
+          // console.log(decodedData)
+          // console.log(decodedData.id)
   if(decodedData.type=="seller"){
         return(
           <>
  <NavDropdown.Item > <Link  className="nav-link" to={`/Seller/${decodedData.id}`}>My page</Link></NavDropdown.Item>
+ <NavDropdown.Item > <Link  className="nav-link" to={`/Order/${decodedData.id}`}> Orders</Link></NavDropdown.Item>
           </>
               )
 }else {
   return(
     <>
      <NavDropdown.Item > <Link  className="nav-link" to="/Favorite">My Favorite </Link></NavDropdown.Item>
+     <NavDropdown.Item > <Link  className="nav-link" to="/OrderB">My Orders </Link></NavDropdown.Item>
     </>
   )
 }
@@ -137,8 +141,8 @@ function NavBar () {
 
     {(function(){
   if(decodedData!=undefined){
-          console.log(decodedData)
-          console.log(decodedData.id)
+          // console.log(decodedData)
+          // console.log(decodedData.id)
   if(decodedData.type==="byer"){
         return(
           <>
@@ -175,6 +179,8 @@ function NavBar () {
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/Cart" element={<Cart/>}/>
           <Route path="/Favorite" element={<Favorite/>}/>
+          <Route path="/Order/:id" element={<Order/>}/>
+          <Route path="/OrderB" element={<OrderB/>}/>
 </Routes> 
  </div>
 

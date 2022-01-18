@@ -588,7 +588,9 @@ margin-left: 35%;
 .last_section button:hover {
   background-color: #101030
 }
-
+.HEART{
+  color: red;
+}
 .heart {
   height: 40px;
   width: 40px;

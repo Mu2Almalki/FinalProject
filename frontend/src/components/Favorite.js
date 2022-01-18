@@ -12,7 +12,7 @@ export default function Favorite() {
     const storedToken = localStorage.getItem("token");
     if (storedToken){
       decodedData = jwt_decode(storedToken, { payload: true });
-       console.log(decodedData);
+    //    console.log(decodedData);
        let expirationDate = decodedData.exp;
         var current_time = Date.now() / 1000;
         if(expirationDate < current_time)
@@ -29,7 +29,7 @@ export default function Favorite() {
           .get(`/favorite/${decodedData.id}`)
           .then((res) => {
             console.log(res.data);
-            console.log(decodedData.id);
+            // console.log(decodedData.id);
             setFav(res.data);
           });
       }, []);
@@ -42,7 +42,7 @@ export default function Favorite() {
       .delete(`/favorite/delete/${decodedData.id}/${_id}`)
       .then((response) => {
         console.log(" deleted: ", response.data);
-        setFav(response.data);
+        setFav(response.data.favorite);
       });
   };
 

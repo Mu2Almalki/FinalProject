@@ -58,25 +58,27 @@ export default function Cart() {
   // checkout
   async function checkout (token, addresses) {
     axios
-      .post("/order/post", {cartProduct:cart , TotalOrder:total , BuyerId:userId })
+      .post(`/order/post/${decodedData.id}`, {cartProduct:cart , TotalOrder:total , BuyerId:userId })
       .then(async (res) => {
-        try {
-          // const res =
-          await axios.post("/payment/post", {
-            tokenId: token.id,
-            amount: total * 3.75 * 100,
-          });
-        } catch (error) {}
-console.log(token.id)
-        // console.log(res);
-        Swal.fire({
-          title: "Congaraduations",
-          text: "Your byment succsess",
-          icon: "success",
-          didClose: () => {
-            navigate("/");
-          },
-        });
+        console.log(res.data)
+        setCart([])
+//         try {
+//           // const res =
+//           await axios.post("/payment/post", {
+//             tokenId: token.id,
+//             amount: total * 3.75 * 100,
+//           });
+//         } catch (error) {}
+// console.log(token.id)
+//         // console.log(res);
+//         Swal.fire({
+//           title: "Congaraduations",
+//           text: "Your byment succsess",
+//           icon: "success",
+//           didClose: () => {
+//             navigate("/");
+//           },
+//         });
       })
       .catch(function (error) {
         console.log(error);
@@ -190,16 +192,16 @@ console.log(token.id)
                 </div>
               </div>
               <div>
-                  <StripeCheckout
+                  {/* <StripeCheckout
                     stripeKey="pk_test_51KBwACGy54utR4N2eXQClkvFUiUkxc8Mj2BOovr07m7DwbV1DuTxHhil4rSyUL5QEA3T38BkDdGRdytTkzHr3KWN006DFv2XjU"
                     token={checkout}
                     billingAddress
                     shippingAddress
                     amount={Math.floor((total * 1.15) / 3.75) * 100}
                     // name={cartItems}
-                  >
-                    <Button>Checkout</Button>
-                  </StripeCheckout>
+                  > */}
+                    <Button onClick={checkout}>Checkout</Button>
+                  {/* </StripeCheckout> */}
                 </div>
             </>
           );

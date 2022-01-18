@@ -36,7 +36,7 @@ app.use('/cart' ,routerCart)
 app.use('/favorite',routerFavorite)
 // _______________________________________________________payment
 app.use('/payment',routerStripe)
-// ________________________________________________
+// ________________________________________________Order
 app.use('/order',routerOrder)
 // app.listen(3001, ()=>{
 //     console.log("express has started!")

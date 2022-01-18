@@ -34,7 +34,7 @@ router.delete('/delete/:uid/:pid' , (req,res)=>{
                 favorite: req.params.pid,
               },
             }
-          ).then((resUser)=>{
+          ).populate("favorite").then((resUser)=>{
               res.send(resUser)
         })
    

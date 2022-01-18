@@ -8,6 +8,8 @@ import jwt_decode from "jwt-decode";
 import { Form, Row, Col, Button, Modal, Card } from "react-bootstrap";
 import { FcLikePlaceholder , FcLike } from "react-icons/fc";
 import ImgUploud from "./ImgUploud";
+import {FaHeart,FaRegHeart} from 'react-icons/fa'
+
 export default function Product({ item ,setProduct }) {
   const [addImg, setAddImg] = useState(item.image);
   const [addNameP, setAddNameP] = useState(item.name);
@@ -27,7 +29,7 @@ export default function Product({ item ,setProduct }) {
   const storedToken = localStorage.getItem("token");
   if (storedToken) {
     decodedData = jwt_decode(storedToken, { payload: true });
-    console.log(decodedData);
+    // console.log(decodedData);
     let expirationDate = decodedData.exp;
     var current_time = Date.now() / 1000;
     if (expirationDate < current_time) {
@@ -95,6 +97,7 @@ export default function Product({ item ,setProduct }) {
 
   // add favorite
   function AddFav(_id) {
+    setheart(!heart)
     axios
       .post("/favorite/post", {
         product: _id,
@@ -171,6 +174,8 @@ export default function Product({ item ,setProduct }) {
                                 className={`fa ${heart ? "fa-heart-o" : "fa-heart"}`}
 
                               ></i>
+                              {/* {heart?<FaRegHeart  onClick={()=>{setHeart(!heart)}}></FaRegHeart>
+                              :<FaHeart className="HEART" onClick={()=>{AddFav(item._id)}}></FaHeart>} */}
                             </div>
                           </div>
                         );
