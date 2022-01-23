@@ -1,5 +1,5 @@
 import React from 'react'
-import{Row , Col ,Card } from 'react-bootstrap'
+import{Row , Col ,Card , Button } from 'react-bootstrap'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams , useNavigate} from "react-router-dom";
@@ -122,7 +122,7 @@ if(decodedData!=undefined){
 if(decodedData.type=="seller"){
       return(
         <>
-<input placeholder=" About me" onChange ={(e)=> setAddDetails(e.target.value)} style={{"width":"300px"}}/>
+<textarea placeholder=" About me" onChange ={(e)=> setAddDetails(e.target.value)} style={{"width":"300px"}}/>
 
     </>
             )
@@ -131,7 +131,10 @@ if(decodedData.type=="seller"){
 })()}
 
  <br/><br/>
-<button onClick={(e)=>{handlUpdate(e)}}>Save</button>
+<button
+ className="bbt"
+variant="outline-dark"
+ onClick={(e)=>{handlUpdate(e)}}>Save</button>
 </Card.Text>
         </Card.Body>
       </Card>

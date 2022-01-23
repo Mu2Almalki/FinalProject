@@ -26,5 +26,25 @@ const product = Order.find({Buyer:req.params.buyerId}).then((orders)=>{
 })
 }) 
 
+router.get('/sellerOrder/:sellerId',(req,res)=>{
+  const allorder = {order:[], buyer:[]}
+  const product = Order.find({}).then((orders)=>{
+    orders.forEach((order)=>{
+      const ord = order.products.filter(pro => pro.products.seller == req.params.sellerId)
+      allorder.order.push(ord)
+      // allorder.buyer = order.Buyer
+      console.log("oder",order.Buyer)
+      user.find({_id:order.Buyer}, { name: 1, _id:0 }).then((user)=>{
+        allorder.buyer.push(user[0].name)
+        console.log("user",user[0])
+        console.log("userrrrr",allorder.buyer)
+         
+      })
+      
+    })
+    res.send(allorder)
+    // _______________________
+  })
+  }) 
 
 module.exports =router;

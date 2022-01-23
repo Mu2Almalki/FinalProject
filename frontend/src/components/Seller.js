@@ -21,7 +21,7 @@ import Modale from "./Modale";
 import Product from "./Product";
 import Comment from "./Comment";
 
-export default function Seller() {
+export default function Seller({setRefresh}) {
   const [modalShow, setModalShow] = React.useState(false); /*Modale*/
   const [heart, setheart] = useState(true);
 
@@ -161,7 +161,7 @@ export default function Seller() {
                 <div>
                   <>
                     <Product item={item} setProduct=
-                    {setProduct} />
+                    {setProduct} setRefresh={setRefresh}/>
                   </>
 
                 </div>

@@ -6,10 +6,10 @@ import jwt_decode from "jwt-decode";
 import { BsTrash } from "react-icons/bs";
 import { Button } from "react-bootstrap";
 import StripeCheckout from "react-stripe-checkout";
-
+import "../App.css";
 import Swal from "sweetalert2";
 
-export default function Cart() {
+export default function Cart({setRefresh}) {
   let decodedData;
   const storedToken = localStorage.getItem("token");
   if (storedToken) {
@@ -39,6 +39,8 @@ export default function Cart() {
         console.log(decodedData.id);
         setCart(res.data[0].cart);
         setLoading(false);
+        
+        
       });
   }, []);
 
@@ -52,6 +54,11 @@ export default function Cart() {
         console.log(" deleted: ", response.data);
         setCart(response.data.cart);
         setTotal(response.data.total);
+        setRefresh(false)
+      })
+      .then((res) => {
+        console.log(res);
+        setRefresh(true)
       });
   };
 
@@ -89,7 +96,7 @@ export default function Cart() {
 
   if (loading) { 
     return (
-    <div class="spinner-border text-danger" role="status">
+    <div class="spinner-border text-danger" role="status"c>
       <span class="sr-only">Loading...</span>
     </div>
   );

@@ -17,11 +17,12 @@ import OrderB from './OrderB'
 import Favorite from "./Favorite";
 import Comment from "./Comment";
 import { FaSignOutAlt , FaSignInAlt} from "react-icons/fa";
-
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 
 function NavBar () {
-
+  const [ refresh, setRefresh] = useState()
   // const id = useParams;
 
   let decodedData ;
@@ -37,6 +38,8 @@ function NavBar () {
       }
    }
 
+   const [cart,setCart]=useState()
+   const [loading, setLoading] = useState(true);
 
   let navigate = useNavigate()
     const logout=(e)=>{
@@ -45,6 +48,32 @@ function NavBar () {
         navigate('/')
 
     }
+
+    useEffect(() => {
+      if(decodedData==undefined){
+        setCart(0)
+        setLoading(false);
+      }
+      else{
+        console.log("lllll");
+        axios.get(`/cart/cart/${decodedData.id}`).then((res) => {
+          console.log(res.data);
+          console.log(res.data[0]?.cart?.length);
+          setCart(res.data[0]?.cart?.length)
+          setLoading(false);
+          setRefresh(false)
+        });
+      }
+        
+      }, [refresh]);
+
+      if (loading) { 
+        return (
+        <div class="spinner-border text-danger" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      );
+      }
 
 
   return(
@@ -146,9 +175,10 @@ function NavBar () {
   if(decodedData.type==="byer"){
         return(
           <>
-          <Link to="/Cart"> <a class="text-reset me-3" href="#"> 
-    <i className="fas fa-shopping-cart"></i>
-  </a></Link>
+          <Link to="/Cart">  <a class="nav-link" href="/Cart">
+          <span class="badge badge-pill bg-danger">{cart}</span>
+          <span><i class="fas fa-shopping-cart"></i></span>
+        </a></Link>
 
           </>
               )
@@ -174,10 +204,10 @@ function NavBar () {
           <Route path="/AppLogin"  element={<AppLogin/>} />
           {/* <Route path="/Signup"  element={<Signup/>} /> */}
           <Route path="/AboutUs" element={<AboutUs/>} />
-          <Route path="/Seller/:id" element={<Seller/>}/>
+          <Route path="/Seller/:id" element={<Seller setRefresh={setRefresh}/>}/>
           <Route path="/Buyer/:id" element={<Buyer/>}/>
           <Route path="/Profile" element={<Profile/>}/>
-          <Route path="/Cart" element={<Cart/>}/>
+          <Route path="/Cart" element={<Cart setRefresh={setRefresh}/>}/>
           <Route path="/Favorite" element={<Favorite/>}/>
           <Route path="/Order/:id" element={<Order/>}/>
           <Route path="/OrderB" element={<OrderB/>}/>

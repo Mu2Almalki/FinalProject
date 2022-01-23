@@ -9,8 +9,9 @@ import { Form, Row, Col, Button, Modal, Card } from "react-bootstrap";
 import { FcLikePlaceholder , FcLike } from "react-icons/fc";
 import ImgUploud from "./ImgUploud";
 import {FaHeart,FaRegHeart} from 'react-icons/fa'
+import swal from 'sweetalert' 
 
-export default function Product({ item ,setProduct }) {
+export default function Product({ item ,setProduct,setRefresh }) {
   const [addImg, setAddImg] = useState(item.image);
   const [addNameP, setAddNameP] = useState(item.name);
   const [addDis, setAddDis] = useState("");
@@ -51,7 +52,7 @@ export default function Product({ item ,setProduct }) {
 
   const deleteProduct = (e, _id) => {
     e.preventDefault();
-    console.log(_id);
+    // console.log(_id);
     axios
       .delete(`/product/delete/${_id}/${decodedData.id}`)
       .then((response) => {
@@ -59,6 +60,7 @@ export default function Product({ item ,setProduct }) {
         setUser(response.data);
         setProduct(response.data.products);
       });
+      
   };
 
   //  Update Product
@@ -92,7 +94,10 @@ export default function Product({ item ,setProduct }) {
       })
       .then((res) => {
         console.log(res);
+        setRefresh(true)
       });
+      swal({title:"added to cart"
+    ,icon:'success'})
   }
 
   // add favorite
@@ -130,7 +135,7 @@ export default function Product({ item ,setProduct }) {
           <div className="cardpp">
             <i className="fa fa-long-arrow-left"></i>
             <div className="imagepp">
-              <img src={item.image} />
+              <img src={item.image}  style={{height:"250px" , width:"250px" }}/>
             </div>
             <div className="textpp">
               <br/>

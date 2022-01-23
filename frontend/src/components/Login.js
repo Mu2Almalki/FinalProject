@@ -30,7 +30,7 @@ import jwt from "jwt-decode"
           console.log(res.data);
             if (res.data.errors){
               setLoginerr(res.data.errors)
-              console.log(loginerr)
+              console.log()
 
             }
           if (res.data.user) {
@@ -86,7 +86,7 @@ import jwt from "jwt-decode"
                 <p style={{color:"red"}}>{loginerr.password}</p>
                 }
              
-              {loginerr.password == "" ? "" : <div><p>{loginerr.password}</p></div>}
+              {loginerr.password == "" ? "" : <div><p style={{color:"red"}}>{loginerr.password}</p></div>}
             </div>
             <div className="botnn">
               {" "}
